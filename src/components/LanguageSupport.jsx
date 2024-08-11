@@ -18,7 +18,7 @@ const languages = [
 ]
 export default function LanguageSupport() {
   return (
-    <div className="section flex justify-center" >
+    <div className="section flex justify-center my-16" >
     <div className="content container mx-auto px-4 max-w-[1300px]">
         <div className="block-heading">
             <h1 className="text-start text-[32px] lg:text-[54px] font-medium mb-6">Language Support</h1>
