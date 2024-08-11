@@ -21,7 +21,7 @@ const App = () => {
         <Hero />
         <Benefits />
         <Testimonies/>
-        <div className="companies_mentioned my-16">
+        <div className="companies_mentioned my-20">
           <Companies />
         </div>
     <LanguageSupport/>
