@@ -12,7 +12,6 @@ import LanguageSupport from "./components/LanguageSupport";
 import Services from "./components/Services";
 import { Testimonies } from "./components/Testimonies";
 import WorkFlow from "./components/WorkFlow";
-import FormPage from "./pages/form/FormPage";
 
 const HomePage = () => {
   return (
@@ -41,7 +40,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/form" element={<FormPage />} />
+        {/* <Route path="/another-page" element={<AnotherPage />} /> */}
       </Routes>
     </BrowserRouter>
   );
