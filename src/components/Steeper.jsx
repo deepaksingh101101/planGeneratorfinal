@@ -15,6 +15,7 @@ const Steeper = () => {
         { icon: "6", label: 'Treatment' },
         { icon: "7", label: 'Treatment' }
     ];
+    
 
     const [index, setIndex] = useState(0);
 
@@ -79,7 +80,7 @@ const Steeper = () => {
             <div className="steps-container mb-3 flex justify-center items-center bg-transparent">
                 <div className="steps w-full overflow-auto">
                     {steps.map((step, idx) => (
-                        <Step key={idx} icon={step.icon} label={step.label} isActive={idx === index} />
+                        <Step key={idx} icon={step.icon} label={step.label} isActive={idx === index}/>
                     ))}
                 </div>
             </div>
@@ -120,25 +121,14 @@ const Steeper = () => {
                           ))}
                         </div>
                       </div>
-                      <button
+                      {/* <button
                         type="submit"
                         className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
                       >
                         Submit
-                      </button>
+                      </button> */}
                     </form>
                   </div>
-                </div>
-              </div>
-              <div className="mt-12">
-                <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-8 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
-                  <h2 className="text-2xl font-bold text-white mb-4">We value your privacy</h2>
-                  <p className="text-white">
-                    At 15minuteplan.ai, we are committed to protecting your privacy and the security of your personal information. 
-                    We collect only the necessary data to generate your business plan and improve our service, and we will never steal 
-                    your business idea or share your information with third parties without your consent. 
-                    <a href="#" className="underline text-white font-semibold">Learn more about our privacy policy</a>.
-                  </p>
                 </div>
               </div>
             </div>
@@ -252,26 +242,8 @@ const Steeper = () => {
                           className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                         />
                       </div>
-
-                      <button
-                        type="submit"
-                        className="border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
-                      >
-                        Submit
-                      </button>
                     </form>
                   </div>
-                </div>
-              </div>
-              <div className="mt-12">
-                <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-8 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
-                  <h2 className="text-2xl font-bold text-white mb-4">We value your privacy</h2>
-                  <p className="text-white">
-                    At 15minuteplan.ai, we are committed to protecting your privacy and the security of your personal information. 
-                    We collect only the necessary data to generate your business plan and improve our service, and we will never steal 
-                    your business idea or share your information with third parties without your consent. 
-                    <a href="#" className="underline text-white font-semibold">Learn more about our privacy policy</a>.
-                  </p>
                 </div>
               </div>
             </div>
@@ -283,7 +255,7 @@ const Steeper = () => {
                     </>
                 )}
 
-                <div className="flex justify-between flex-row-reverse">
+                <div className="flex justify-between flex-row-reverse items-center">
                     <div className="flex justify-end">
                         {index >= 0 && index < steps.length - 1 && (
                             <button
@@ -307,6 +279,17 @@ const Steeper = () => {
                         )}
                     </div>
                 </div>
+                <div className="mt-12">
+                <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-8 rounded-lg shadow-lg transform transition duration-500 ">
+                  <h2 className="text-2xl font-bold text-white mb-4">We value your privacy</h2>
+                  <p className="text-white">
+                    At 15minuteplan.ai, we are committed to protecting your privacy and the security of your personal information. 
+                    We collect only the necessary data to generate your business plan and improve our service, and we will never steal 
+                    your business idea or share your information with third parties without your consent. 
+                    <a href="#" className="underline text-white font-semibold">Learn more about our privacy policy</a>.
+                  </p>
+                </div>
+              </div>
             </div>
         </>
     );
