@@ -34,6 +34,14 @@ const initialState = {
     product4Description: '',
     product5Name: '',
     product5Description: ''
+  },
+  fifthForm: {
+    successDriver1: '',
+    successDriver2: '',
+    successDriver3: '',
+    weakness1: '',
+    weakness2: '',
+    weakness3: ''
   }
 };
 
@@ -64,9 +72,13 @@ const formSlice = createSlice({
     setFourthForm: (state, action) => {
       const { name, value } = action.payload;
       state.fourthForm[name] = value;
+    },
+    setFifthForm: (state, action) => {
+      const { name, value } = action.payload;
+      state.fifthForm[name] = value;
     }
   }
 });
 
-export const { setBusinessType, setBusinessPlan, setSecondForm, setProductService, setSalesChannel, setThirdForm, setFourthForm } = formSlice.actions;
+export const { setBusinessType, setBusinessPlan, setSecondForm, setProductService, setSalesChannel, setThirdForm, setFourthForm, setFifthForm } = formSlice.actions;
 export default formSlice.reducer;
