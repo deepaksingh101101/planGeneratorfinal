@@ -13,12 +13,27 @@ const initialState = {
     customerLocation: '',
   },
   thirdForm: {
+    customerGroup1: '',
     customerGroup1Description: '',
     customerGroup1IncomeLevel: '',
+    customerGroup2: '',
     customerGroup2Description: '',
     customerGroup2IncomeLevel: '',
+    customerGroup3: '',
     customerGroup3Description: '',
     customerGroup3IncomeLevel: ''
+  },
+  fourthForm: {
+    product1Name: '',
+    product1Description: '',
+    product2Name: '',
+    product2Description: '',
+    product3Name: '',
+    product3Description: '',
+    product4Name: '',
+    product4Description: '',
+    product5Name: '',
+    product5Description: ''
   }
 };
 
@@ -45,9 +60,13 @@ const formSlice = createSlice({
     setThirdForm: (state, action) => {
       const { name, value } = action.payload;
       state.thirdForm[name] = value;
+    },
+    setFourthForm: (state, action) => {
+      const { name, value } = action.payload;
+      state.fourthForm[name] = value;
     }
   }
 });
 
-export const { setBusinessType, setBusinessPlan, setSecondForm, setProductService, setSalesChannel, setThirdForm } = formSlice.actions;
+export const { setBusinessType, setBusinessPlan, setSecondForm, setProductService, setSalesChannel, setThirdForm, setFourthForm } = formSlice.actions;
 export default formSlice.reducer;
