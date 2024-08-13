@@ -12,6 +12,14 @@ const initialState = {
     salesChannel: { value: '', label: '' },
     customerLocation: '',
   },
+  thirdForm: {
+    customerGroup1Description: '',
+    customerGroup1IncomeLevel: '',
+    customerGroup2Description: '',
+    customerGroup2IncomeLevel: '',
+    customerGroup3Description: '',
+    customerGroup3IncomeLevel: ''
+  }
 };
 
 const formSlice = createSlice({
@@ -34,8 +42,12 @@ const formSlice = createSlice({
     setSalesChannel: (state, action) => {
       state.secondForm.salesChannel = action.payload;
     },
-  },
+    setThirdForm: (state, action) => {
+      const { name, value } = action.payload;
+      state.thirdForm[name] = value;
+    }
+  }
 });
 
-export const { setBusinessType, setBusinessPlan, setSecondForm, setProductService, setSalesChannel } = formSlice.actions;
+export const { setBusinessType, setBusinessPlan, setSecondForm, setProductService, setSalesChannel, setThirdForm } = formSlice.actions;
 export default formSlice.reducer;
