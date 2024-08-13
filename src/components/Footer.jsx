@@ -11,7 +11,7 @@ const Footer = () => {
           <button href="/learn-more" className=" px-[80px] continueBtnShadow bg-orange-700 text-white  py-4 font-bold rounded-md transitionC hover:scale-105 ">
                Make Business Plan
             </button>
-            <button  href="/pricing"  style={{border:"2px solid #C2410C"}} className="login rounded-md font-bold px-2  btn-hover-effect hover:scale-105 transitionC  ">
+            <button  href="/pricing"  style={{border:"2px solid #C2410C"}} className="login rounded-md font-bold px-2 py-4 btn-hover-effect hover:scale-105 transitionC  ">
             Login if you've already made a plan
             </button>
            
