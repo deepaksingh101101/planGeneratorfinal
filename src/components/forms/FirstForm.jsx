@@ -1,25 +1,25 @@
 // src/components/FirstForm.js
 import { useDispatch, useSelector } from 'react-redux';
-import { setBusinessPlan, setBusinessType } from '../../features/formSlice';
+import { setFirstForm } from '../../features/formSlice';
 
 export default function FirstForm() {
   const dispatch = useDispatch();
-  const { businessType, businessPlan } = useSelector((state) => state.form);
+  const { firstForm } = useSelector((state) => state.form);
 
   const handleBusinessTypeChange = (e) => {
     const selectedOption = business.find((option) => option.value === e.target.value);
-    dispatch(setBusinessType(selectedOption));
+    dispatch(setFirstForm({ name: 'businessType', value: selectedOption.label }));
   };
 
   const handleBusinessPlanChange = (e) => {
     const selectedOption = businessOperationalStatus.find((option) => option.value === e.target.value);
-    dispatch(setBusinessPlan(selectedOption));
+    dispatch(setFirstForm({ name: 'businessPlan', value: selectedOption.label }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission
-    console.log({ businessType, businessPlan });
+    console.log(firstForm);
   };
 
   const businessOperationalStatus = [
@@ -51,7 +51,7 @@ export default function FirstForm() {
                       <div className="mt-4 space-y-4">
                         {business.map((objective) => (
                           <label key={objective.value} className="flex items-center text-white border border-indigo-600 rounded-lg p-4 hover:bg-indigo-800 cursor-pointer transform transition duration-500 hover:scale-105 shadow-lg">
-                            <input type="radio" name="objective" value={objective.value} checked={businessType.value === objective.value} onChange={handleBusinessTypeChange} className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded" />
+                            <input type="radio" name="objective" value={objective.value} checked={firstForm.businessType.answer === objective.label} onChange={handleBusinessTypeChange} className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded" />
                             <span className="ml-2 text-start text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px]">{objective.label}</span>
                           </label>
                         ))}
@@ -62,7 +62,7 @@ export default function FirstForm() {
                       <div className="mt-4 space-y-4">
                         {businessOperationalStatus.map((status) => (
                           <label key={status.value} className="flex items-center text-white border border-indigo-600 rounded-lg p-4 hover:bg-indigo-800 cursor-pointer transform transition duration-500 hover:scale-105 shadow-lg">
-                            <input type="radio" name="status" value={status.value} checked={businessPlan.value === status.value} onChange={handleBusinessPlanChange} className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded" />
+                            <input type="radio" name="status" value={status.value} checked={firstForm.businessPlan.answer === status.label} onChange={handleBusinessPlanChange} className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded" />
                             <span className="ml-2 text-start text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px]">{status.label}</span>
                           </label>
                         ))}

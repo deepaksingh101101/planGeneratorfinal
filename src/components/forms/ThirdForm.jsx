@@ -26,13 +26,29 @@ export default function ThirdForm() {
     { value: "high-income", label: "High-income" }
   ];
 
+  // const renderSuggestions = (field) => {
+  //   return (
+  //     <div className="mt-2 flex flex-row space-y-2">
+  //       {suggestions[field].map((suggestion, index) => (
+  //         <div
+  //           key={index}
+  //           className="py-2 px-5 bg-indigo-800 rounded-lg cursor-pointer hover:bg-orange-700 w-full text-center"
+  //           onClick={() => dispatch(setThirdForm({ name: field, value: suggestion }))}
+  //         >
+  //           <span className='text-[15px]'>{suggestion}</span>
+  //         </div>
+  //       ))}
+  //     </div>
+  //   );
+  // };
+
   const renderSuggestions = (field) => {
     return (
-      <div className="mt-2 flex items-center justify-between px-20 space-y-2">
+      <div className="mt-2 flex flex-col space-y-2">
         {suggestions[field].map((suggestion, index) => (
           <div
             key={index}
-            className="py-2 px-5 bg-indigo-800 rounded-lg cursor-pointer hover:bg-orange-700"
+            className="py-2 px-5 bg-indigo-800 rounded-lg cursor-pointer hover:bg-orange-700 w-full text-center"
             onClick={() => dispatch(setThirdForm({ name: field, value: suggestion }))}
           >
             <span className='text-[15px]'>{suggestion}</span>
@@ -64,7 +80,7 @@ export default function ThirdForm() {
                       <input
                         type="text"
                         name="customerGroup1Description"
-                        value={thirdForm.customerGroup1Description}
+                        value={thirdForm.customerGroup1Description.answer}
                         onChange={handleCustomerGroupChange}
                         onClick={() => setActiveField('customerGroup1Description')}
                         required
@@ -93,7 +109,7 @@ export default function ThirdForm() {
                               type="radio"
                               name="customerGroup1IncomeLevel"
                               value={level.value}
-                              checked={thirdForm.customerGroup1IncomeLevel === level.value}
+                              checked={thirdForm.customerGroup1IncomeLevel.answer === level.label}
                               onChange={handleCustomerGroupChange}
                               className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded"
                               required
@@ -111,7 +127,7 @@ export default function ThirdForm() {
                       <input
                         type="text"
                         name="customerGroup2Description"
-                        value={thirdForm.customerGroup2Description}
+                        value={thirdForm.customerGroup2Description.answer}
                         onChange={handleCustomerGroupChange}
                         onClick={() => setActiveField('customerGroup2Description')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
@@ -139,7 +155,7 @@ export default function ThirdForm() {
                               type="radio"
                               name="customerGroup2IncomeLevel"
                               value={level.value}
-                              checked={thirdForm.customerGroup2IncomeLevel === level.value}
+                              checked={thirdForm.customerGroup2IncomeLevel.answer === level.label}
                               onChange={handleCustomerGroupChange}
                               className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded"
                             />
@@ -156,7 +172,7 @@ export default function ThirdForm() {
                       <input
                         type="text"
                         name="customerGroup3Description"
-                        value={thirdForm.customerGroup3Description}
+                        value={thirdForm.customerGroup3Description.answer}
                         onChange={handleCustomerGroupChange}
                         onClick={() => setActiveField('customerGroup3Description')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
@@ -184,7 +200,7 @@ export default function ThirdForm() {
                               type="radio"
                               name="customerGroup3IncomeLevel"
                               value={level.value}
-                              checked={thirdForm.customerGroup3IncomeLevel === level.value}
+                              checked={thirdForm.customerGroup3IncomeLevel.answer === level.label}
                               onChange={handleCustomerGroupChange}
                               className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded"
                             />

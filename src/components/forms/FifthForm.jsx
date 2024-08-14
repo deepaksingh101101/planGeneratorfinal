@@ -55,13 +55,12 @@ export default function FifthForm() {
                   <form onSubmit={handleSubmit} className="flex flex-col space-y-8 mt-10">
                     {/* Success Drivers */}
                     <div>
-                    <h2 className="text-3xl mb-3">Success Driver</h2>
-
+                      <h2 className="text-3xl mb-3">Success Driver</h2>
                       <label className="font-bold text-lg text-white">Success Driver 1 (required)</label>
                       <input
                         type="text"
                         name="successDriver1"
-                        value={fifthForm.successDriver1}
+                        value={fifthForm.successDriver1.answer}
                         onChange={handleChange}
                         onClick={() => setActiveField('successDriver1')}
                         required
@@ -74,7 +73,7 @@ export default function FifthForm() {
                       <input
                         type="text"
                         name="successDriver2"
-                        value={fifthForm.successDriver2}
+                        value={fifthForm.successDriver2.answer}
                         onChange={handleChange}
                         onClick={() => setActiveField('successDriver2')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
@@ -86,7 +85,7 @@ export default function FifthForm() {
                       <input
                         type="text"
                         name="successDriver3"
-                        value={fifthForm.successDriver3}
+                        value={fifthForm.successDriver3.answer}
                         onChange={handleChange}
                         onClick={() => setActiveField('successDriver3')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
@@ -96,12 +95,12 @@ export default function FifthForm() {
 
                     {/* Weaknesses */}
                     <div>
-                    <h2 className="text-3xl mb-3">Weakness</h2>
+                      <h2 className="text-3xl mb-3">Weakness</h2>
                       <label className="font-bold text-lg text-white">Weakness 1 (optional)</label>
                       <input
                         type="text"
                         name="weakness1"
-                        value={fifthForm.weakness1}
+                        value={fifthForm.weakness1.answer}
                         onChange={handleChange}
                         onClick={() => setActiveField('weakness1')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
@@ -113,7 +112,7 @@ export default function FifthForm() {
                       <input
                         type="text"
                         name="weakness2"
-                        value={fifthForm.weakness2}
+                        value={fifthForm.weakness2.answer}
                         onChange={handleChange}
                         onClick={() => setActiveField('weakness2')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
@@ -125,7 +124,7 @@ export default function FifthForm() {
                       <input
                         type="text"
                         name="weakness3"
-                        value={fifthForm.weakness3}
+                        value={fifthForm.weakness3.answer}
                         onChange={handleChange}
                         onClick={() => setActiveField('weakness3')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"

@@ -1,6 +1,6 @@
 // src/components/SecondForm.js
 import { useDispatch, useSelector } from 'react-redux';
-import { setSecondForm, setProductService, setSalesChannel } from '../../features/formSlice';
+import { setSecondForm } from '../../features/formSlice';
 
 export default function SecondForm() {
   const dispatch = useDispatch();
@@ -13,12 +13,12 @@ export default function SecondForm() {
 
   const handleProductServiceChange = (e) => {
     const selectedOption = productServiceOptions.find((option) => option.value === e.target.value);
-    dispatch(setProductService(selectedOption));
+    dispatch(setSecondForm({ name: 'productService', value: selectedOption.label }));
   };
 
   const handleSalesChannelChange = (e) => {
     const selectedOption = salesChannelOptions.find((option) => option.value === e.target.value);
-    dispatch(setSalesChannel(selectedOption));
+    dispatch(setSecondForm({ name: 'salesChannel', value: selectedOption.label }));
   };
 
   const handleSubmit = (e) => {
@@ -53,7 +53,7 @@ export default function SecondForm() {
                       <input
                         type="text"
                         name="businessName"
-                        value={secondForm.businessName}
+                        value={secondForm.businessName.answer}
                         onChange={handleChange}
                         required
                         className="mt-4 p-4 border border-indigo-600 rounded-lg w-full"
@@ -65,7 +65,7 @@ export default function SecondForm() {
                       <label className="font-bold text-lg text-white">Your business description (required)</label>
                       <textarea
                         name="businessDescription"
-                        value={secondForm.businessDescription}
+                        value={secondForm.businessDescription.answer}
                         onChange={handleChange}
                         required
                         className="mt-4 p-4 border border-indigo-600 rounded-lg w-full"
@@ -78,7 +78,7 @@ export default function SecondForm() {
                       <input
                         type="number"
                         name="numberOfEmployees"
-                        value={secondForm.numberOfEmployees}
+                        value={secondForm.numberOfEmployees.answer}
                         onChange={handleChange}
                         required
                         className="mt-4 p-4 border border-indigo-600 rounded-lg w-full"
@@ -98,7 +98,7 @@ export default function SecondForm() {
                               type="radio"
                               name="productService"
                               value={option.value}
-                              checked={secondForm.productService.value === option.value}
+                              checked={secondForm.productService.answer === option.label}
                               onChange={handleProductServiceChange}
                               className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded"
                               required
@@ -122,7 +122,7 @@ export default function SecondForm() {
                               type="radio"
                               name="salesChannel"
                               value={option.value}
-                              checked={secondForm.salesChannel.value === option.value}
+                              checked={secondForm.salesChannel.answer === option.label}
                               onChange={handleSalesChannelChange}
                               className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded"
                               required
@@ -139,7 +139,7 @@ export default function SecondForm() {
                       <input
                         type="text"
                         name="customerLocation"
-                        value={secondForm.customerLocation}
+                        value={secondForm.customerLocation.answer}
                         onChange={handleChange}
                         required
                         className="mt-4 p-4 border border-indigo-600 rounded-lg w-full"
