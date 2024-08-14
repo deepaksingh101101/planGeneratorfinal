@@ -41,7 +41,8 @@ const initialState = {
     weakness1: { question: 'Weakness 1 (optional)', answer: '' },
     weakness2: { question: 'Weakness 2 (optional)', answer: '' },
     weakness3: { question: 'Weakness 3 (optional)', answer: '' },
-  }
+  },
+  suggestions: {},
 };
 
 const formSlice = createSlice({
@@ -68,8 +69,11 @@ const formSlice = createSlice({
       const { name, value } = action.payload;
       state.fifthForm[name].answer = value;
     },
+    setSuggestions(state, action) {
+      state.suggestions = action.payload;
+    },
   }
 });
 
-export const { setFirstForm, setSecondForm, setThirdForm, setFourthForm, setFifthForm } = formSlice.actions;
+export const { setFirstForm, setSecondForm, setThirdForm, setFourthForm, setFifthForm ,setSuggestions} = formSlice.actions;
 export default formSlice.reducer;

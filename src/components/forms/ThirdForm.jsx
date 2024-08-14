@@ -1,51 +1,60 @@
-// src/components/ThirdForm.js
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setThirdForm } from '../../features/formSlice';
+import { setThirdForm, setSuggestions } from '../../features/formSlice';
 import { BiRevision } from 'react-icons/bi';
+import { getSuggestionsFromOpenAI } from '../../api/openai';
 
 export default function ThirdForm() {
   const dispatch = useDispatch();
-  const { thirdForm } = useSelector((state) => state.form);
+  const { thirdForm, firstForm, secondForm, suggestions } = useSelector((state) => state.form);
   const [activeField, setActiveField] = useState(null);
+  const [fetchedFields, setFetchedFields] = useState({});
 
   const handleCustomerGroupChange = (e) => {
     const { name, value } = e.target;
     dispatch(setThirdForm({ name, value }));
   };
 
-  const suggestions = {
-    customerGroup1Description: ["Example 1", "Example 2", "Example 3", "Example 4"],
-    customerGroup2Description: ["Example 2", "Example 5", "Example 6", "Example 5"],
-    customerGroup3Description: ["Example 3", "Example 8", "Example 9", "Example 6"],
+  const fetchSuggestions = async (field, forceFetch = false) => {
+    if (!forceFetch && fetchedFields[field]) return;
+
+    try {
+      const formData = {
+        firstForm: Object.values(firstForm),
+        secondForm: Object.values(secondForm)
+      };
+
+      const suggestionsFromAPI = await getSuggestionsFromOpenAI(formData, field);
+      dispatch(setSuggestions({ ...suggestions, [field]: suggestionsFromAPI }));
+      setFetchedFields({ ...fetchedFields, [field]: true });
+    } catch (error) {
+      console.error("Failed to fetch suggestions", error);
+    }
   };
 
-  const incomeLevels = [
-    { value: "low-income", label: "Low-income" },
-    { value: "medium-income", label: "Medium-income" },
-    { value: "high-income", label: "High-income" }
-  ];
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(thirdForm);
+  };
 
-  // const renderSuggestions = (field) => {
-  //   return (
-  //     <div className="mt-2 flex flex-row space-y-2">
-  //       {suggestions[field].map((suggestion, index) => (
-  //         <div
-  //           key={index}
-  //           className="py-2 px-5 bg-indigo-800 rounded-lg cursor-pointer hover:bg-orange-700 w-full text-center"
-  //           onClick={() => dispatch(setThirdForm({ name: field, value: suggestion }))}
-  //         >
-  //           <span className='text-[15px]'>{suggestion}</span>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   );
-  // };
+  const regenerateSuggestions = (field) => {
+    setFetchedFields({ ...fetchedFields, [field]: false }); // Reset the fetched status to force fetch
+    fetchSuggestions(field, true);
+  };
+
+  const handleClickField = (field) => {
+    if (!fetchedFields[field]) {
+      setActiveField(field);
+      fetchSuggestions(field);
+    } else {
+      setActiveField(field);
+    }
+  };
 
   const renderSuggestions = (field) => {
     return (
       <div className="mt-2 flex flex-col space-y-2">
-        {suggestions[field].map((suggestion, index) => (
+        {suggestions[field]?.map((suggestion, index) => (
           <div
             key={index}
             className="py-2 px-5 bg-indigo-800 rounded-lg cursor-pointer hover:bg-orange-700 w-full text-center"
@@ -56,12 +65,6 @@ export default function ThirdForm() {
         ))}
       </div>
     );
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log(thirdForm);
   };
 
   return (
@@ -80,9 +83,9 @@ export default function ThirdForm() {
                       <input
                         type="text"
                         name="customerGroup1Description"
-                        value={thirdForm.customerGroup1Description.answer}
+                        value={thirdForm.customerGroup1Description?.answer || ''}
                         onChange={handleCustomerGroupChange}
-                        onClick={() => setActiveField('customerGroup1Description')}
+                        onClick={() => handleClickField('customerGroup1Description')}
                         required
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       ></input>
@@ -92,7 +95,7 @@ export default function ThirdForm() {
                           <button
                             type="button"
                             className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
-                            // onClick={regenerateSuggestions}
+                            onClick={() => regenerateSuggestions('customerGroup1Description')}
                           >
                             <BiRevision className='mx-2' />
                             <span> Regenerate Suggestions</span>
@@ -103,18 +106,18 @@ export default function ThirdForm() {
                     <div>
                       <label className="font-bold text-lg text-white">Customer Group 1 Income Level (required)</label>
                       <div className="mt-4 space-y-4">
-                        {incomeLevels.map((level) => (
-                          <label key={level.value} className="flex items-center text-white border border-indigo-600 rounded-lg p-4 hover:bg-indigo-800 cursor-pointer transform transition duration-500 hover:scale-105 shadow-lg">
+                        {['low-income', 'medium-income', 'high-income'].map((level, index) => (
+                          <label key={index} className="flex items-center text-white border border-indigo-600 rounded-lg p-4 hover:bg-indigo-800 cursor-pointer transform transition duration-500 hover:scale-105 shadow-lg">
                             <input
                               type="radio"
                               name="customerGroup1IncomeLevel"
-                              value={level.value}
-                              checked={thirdForm.customerGroup1IncomeLevel.answer === level.label}
+                              value={level}
+                              checked={thirdForm.customerGroup1IncomeLevel?.answer === level}
                               onChange={handleCustomerGroupChange}
                               className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded"
                               required
                             />
-                            <span className="ml-2 text-start text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px]">{level.label}</span>
+                            <span className="ml-2 text-start text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px]">{level.replace('-', ' ')}</span>
                           </label>
                         ))}
                       </div>
@@ -127,9 +130,9 @@ export default function ThirdForm() {
                       <input
                         type="text"
                         name="customerGroup2Description"
-                        value={thirdForm.customerGroup2Description.answer}
+                        value={thirdForm.customerGroup2Description?.answer || ''}
                         onChange={handleCustomerGroupChange}
-                        onClick={() => setActiveField('customerGroup2Description')}
+                        onClick={() => handleClickField('customerGroup2Description')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       ></input>
                       {activeField === 'customerGroup2Description' && renderSuggestions('customerGroup2Description')}
@@ -138,7 +141,7 @@ export default function ThirdForm() {
                           <button
                             type="button"
                             className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
-                            // onClick={regenerateSuggestions}
+                            onClick={() => regenerateSuggestions('customerGroup2Description')}
                           >
                             <BiRevision className='mx-2' />
                             <span> Regenerate Suggestions</span>
@@ -149,17 +152,17 @@ export default function ThirdForm() {
                     <div>
                       <label className="font-bold text-lg text-white">Customer Group 2 Income Level (optional)</label>
                       <div className="mt-4 space-y-4">
-                        {incomeLevels.map((level) => (
-                          <label key={level.value} className="flex items-center text-white border border-indigo-600 rounded-lg p-4 hover:bg-indigo-800 cursor-pointer transform transition duration-500 hover:scale-105 shadow-lg">
+                        {['low-income', 'medium-income', 'high-income'].map((level, index) => (
+                          <label key={index} className="flex items-center text-white border border-indigo-600 rounded-lg p-4 hover:bg-indigo-800 cursor-pointer transform transition duration-500 hover:scale-105 shadow-lg">
                             <input
                               type="radio"
                               name="customerGroup2IncomeLevel"
-                              value={level.value}
-                              checked={thirdForm.customerGroup2IncomeLevel.answer === level.label}
+                              value={level}
+                              checked={thirdForm.customerGroup2IncomeLevel?.answer === level}
                               onChange={handleCustomerGroupChange}
                               className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded"
                             />
-                            <span className="ml-2 text-start text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px]">{level.label}</span>
+                            <span className="ml-2 text-start text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px]">{level.replace('-', ' ')}</span>
                           </label>
                         ))}
                       </div>
@@ -172,9 +175,9 @@ export default function ThirdForm() {
                       <input
                         type="text"
                         name="customerGroup3Description"
-                        value={thirdForm.customerGroup3Description.answer}
+                        value={thirdForm.customerGroup3Description?.answer || ''}
                         onChange={handleCustomerGroupChange}
-                        onClick={() => setActiveField('customerGroup3Description')}
+                        onClick={() => handleClickField('customerGroup3Description')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       ></input>
                       {activeField === 'customerGroup3Description' && renderSuggestions('customerGroup3Description')}
@@ -183,7 +186,7 @@ export default function ThirdForm() {
                           <button
                             type="button"
                             className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
-                            // onClick={regenerateSuggestions}
+                            onClick={() => regenerateSuggestions('customerGroup3Description')}
                           >
                             <BiRevision className='mx-2' />
                             <span> Regenerate Suggestions</span>
@@ -194,21 +197,24 @@ export default function ThirdForm() {
                     <div>
                       <label className="font-bold text-lg text-white">Customer Group 3 Income Level (optional)</label>
                       <div className="mt-4 space-y-4">
-                        {incomeLevels.map((level) => (
-                          <label key={level.value} className="flex items-center text-white border border-indigo-600 rounded-lg p-4 hover:bg-indigo-800 cursor-pointer transform transition duration-500 hover:scale-105 shadow-lg">
+                        {['low-income', 'medium-income', 'high-income'].map((level, index) => (
+                          <label key={index} className="flex items-center text-white border border-indigo-600 rounded-lg p-4 hover:bg-indigo-800 cursor-pointer transform transition duration-500 hover:scale-105 shadow-lg">
                             <input
                               type="radio"
                               name="customerGroup3IncomeLevel"
-                              value={level.value}
-                              checked={thirdForm.customerGroup3IncomeLevel.answer === level.label}
+                              value={level}
+                              checked={thirdForm.customerGroup3IncomeLevel?.answer === level}
                               onChange={handleCustomerGroupChange}
                               className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded"
                             />
-                            <span className="ml-2 text-start text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px]">{level.label}</span>
+                            <span className="ml-2 text-start text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px]">{level.replace('-', ' ')}</span>
                           </label>
                         ))}
                       </div>
                     </div>
+                    <button type="submit" className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg">
+                      Submit
+                    </button>
                   </form>
                 </div>
               </div>
