@@ -4,7 +4,7 @@ export const getSuggestionsFromOpenAI = async (formData, activeField) => {
   const apiKey = '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';
 
   let prompt = `
-    Based on the following form data, provide four distinct suggestions for the ${activeField.startsWith('product') ? 'fourth' : 'third'} form fields.
+    Based on the following form data, provide four distinct suggestions for the ${activeField.startsWith('product') || activeField.startsWith('successDriver') || activeField.startsWith('weakness') ? 'fifth' : activeField.startsWith('product') ? 'fourth' : 'third'} form fields.
     First Form (Business Plan Objective):
     ${formData.firstForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
     Second Form (Basic Business Information):
@@ -18,9 +18,16 @@ export const getSuggestionsFromOpenAI = async (formData, activeField) => {
     `;
   }
 
+  if (formData.fourthForm && formData.fourthForm.length > 0) {
+    prompt += `
+    Fourth Form (Product or Service Details):
+    ${formData.fourthForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
+    `;
+  }
+
   prompt += `
-    ${activeField.startsWith('product') ? 'Fourth Form Question' : 'Third Form Question'} (Suggestion should have maximum 10 words):
-    - ${activeField}: ${activeField.startsWith('product') ? 'What type of product or service will you offer?' : 'What type of customers will you target?'}
+    ${activeField.startsWith('product') || activeField.startsWith('successDriver') || activeField.startsWith('weakness') ? 'Fifth Form Question' : activeField.startsWith('product') ? 'Fourth Form Question' : 'Third Form Question'} (Suggestion should have maximum 10 words):
+    - ${activeField}: ${activeField.startsWith('product') ? 'What type of product or service will you offer?' : activeField.startsWith('successDriver') ? 'What success drivers will you focus on?' : activeField.startsWith('weakness') ? 'What are potential weaknesses?' : 'What type of customers will you target?'}
     Suggestions:
     ${activeField}:
     1. [Suggestion 1]
