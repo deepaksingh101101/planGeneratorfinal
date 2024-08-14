@@ -1,38 +1,59 @@
-// src/components/FourthForm.js
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFourthForm } from '../../features/formSlice';
+import { setFourthForm, setSuggestions } from '../../features/formSlice';
+import { BiRevision } from 'react-icons/bi';
+import { getSuggestionsFromOpenAI } from '../../api/openai';
 
 export default function FourthForm() {
   const dispatch = useDispatch();
-  const { fourthForm } = useSelector((state) => state.form);
+  const { fourthForm, thirdForm, firstForm, secondForm, suggestions } = useSelector((state) => state.form);
   const [activeField, setActiveField] = useState(null);
+  const [fetchedFields, setFetchedFields] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     dispatch(setFourthForm({ name, value }));
   };
 
-  const suggestions = {
-    product1Name: ["Example 1", "Example 2", "Example 3", "Example 4"],
-    product1Description: ["Description 1 Example 1", "Description 1 Example 2", "Description 1 Example 3", "Description 1 Example 4"],
-    product2Name: ["Example 1", "Example 2", "Example 3", "Example 4"],
-    product2Description: ["Description 2 Example 1", "Description 2 Example 2", "Description 2 Example 3", "Description 2 Example 4"],
-    product3Name: ["Example 1", "Example 2", "Example 3", "Example 4"],
-    product3Description: ["Description 3 Example 1", "Description 3 Example 2", "Description 3 Example 3", "Description 3 Example 4"],
-    product4Name: ["Example 1", "Example 2", "Example 3", "Example 4"],
-    product4Description: ["Description 4 Example 1", "Description 4 Example 2", "Description 4 Example 3", "Description 4 Example 4"],
-    product5Name: ["Example 1", "Example 2", "Example 3", "Example 4"],
-    product5Description: ["Description 5 Example 1", "Description 5 Example 2", "Description 5 Example 3", "Description 5 Example 4"],
+  const fetchSuggestions = async (field, forceFetch = false) => {
+    if (!forceFetch && fetchedFields[field]) return;
+
+    try {
+      const formData = {
+        firstForm: Object.values(firstForm),
+        secondForm: Object.values(secondForm),
+        thirdForm: Object.values(thirdForm),
+      };
+
+      const suggestionsFromAPI = await getSuggestionsFromOpenAI(formData, field);
+      dispatch(setSuggestions({ ...suggestions, [field]: suggestionsFromAPI }));
+      setFetchedFields({ ...fetchedFields, [field]: true });
+    } catch (error) {
+      console.error("Failed to fetch suggestions", error);
+    }
   };
 
-  const renderSuggestions = (field, isDescription) => {
-    const itemClass = isDescription ? 'py-2 px-5 bg-indigo-800 rounded-lg cursor-pointer hover:bg-orange-700 w-full text-center' : 'py-2 px-5 bg-indigo-800 rounded-lg cursor-pointer hover:bg-orange-700';
-    const containerClass = isDescription ? 'mt-2 flex flex-col space-y-2' : 'mt-2 flex items-center justify-between px-20 space-y-2';
+  const regenerateSuggestions = (field) => {
+    setActiveField(field);
+    fetchSuggestions(field, true);
+  };
+
+  const handleClickField = (field) => {
+    if (!fetchedFields[field]) {
+      setActiveField(field);
+      fetchSuggestions(field);
+    } else {
+      setActiveField(field);
+    }
+  };
+
+  const renderSuggestions = (field) => {
+    const itemClass =  'py-2 px-5 bg-indigo-800 rounded-lg cursor-pointer hover:bg-orange-700 w-full text-center' ;
+    const containerClass =  'mt-2 flex flex-col space-y-2' ;
 
     return (
       <div className={containerClass}>
-        {suggestions[field].map((suggestion, index) => (
+        {suggestions[field]?.map((suggestion, index) => (
           <div
             key={index}
             className={itemClass}
@@ -67,24 +88,48 @@ export default function FourthForm() {
                       <input
                         type="text"
                         name="product1Name"
-                        value={fourthForm.product1Name.answer}
+                        value={fourthForm.product1Name?.answer || ''}
                         onChange={handleChange}
-                        onClick={() => setActiveField('product1Name')}
+                        onClick={() => handleClickField('product1Name')}
                         required
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       />
                       {activeField === 'product1Name' && renderSuggestions('product1Name')}
+                      {activeField === 'product1Name' && (
+                        <div className="flex justify-center my-3">
+                          <button
+                            type="button"
+                            className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
+                            onClick={() => regenerateSuggestions('product1Name')}
+                          >
+                            <BiRevision className='mx-2' />
+                            <span> Regenerate Suggestions</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
                     <div>
                       <label className="font-bold text-lg text-white">Product or Service 1 Description (optional)</label>
                       <textarea
                         name="product1Description"
-                        value={fourthForm.product1Description.answer}
+                        value={fourthForm.product1Description?.answer || ''}
                         onChange={handleChange}
-                        onClick={() => setActiveField('product1Description')}
+                        onClick={() => handleClickField('product1Description')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       ></textarea>
                       {activeField === 'product1Description' && renderSuggestions('product1Description', true)}
+                      {activeField === 'product1Description' && (
+                        <div className="flex justify-center my-3">
+                          <button
+                            type="button"
+                            className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
+                            onClick={() => regenerateSuggestions('product1Description')}
+                          >
+                            <BiRevision className='mx-2' />
+                            <span> Regenerate Suggestions</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
 
                     {/* Product 2 */}
@@ -94,23 +139,47 @@ export default function FourthForm() {
                       <input
                         type="text"
                         name="product2Name"
-                        value={fourthForm.product2Name.answer}
+                        value={fourthForm.product2Name?.answer || ''}
                         onChange={handleChange}
-                        onClick={() => setActiveField('product2Name')}
+                        onClick={() => handleClickField('product2Name')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       />
                       {activeField === 'product2Name' && renderSuggestions('product2Name')}
+                      {activeField === 'product2Name' && (
+                        <div className="flex justify-center my-3">
+                          <button
+                            type="button"
+                            className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
+                            onClick={() => regenerateSuggestions('product2Name')}
+                          >
+                            <BiRevision className='mx-2' />
+                            <span> Regenerate Suggestions</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
                     <div>
                       <label className="font-bold text-lg text-white">Product or Service 2 Description (optional)</label>
                       <textarea
                         name="product2Description"
-                        value={fourthForm.product2Description.answer}
+                        value={fourthForm.product2Description?.answer || ''}
                         onChange={handleChange}
-                        onClick={() => setActiveField('product2Description')}
+                        onClick={() => handleClickField('product2Description')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       ></textarea>
                       {activeField === 'product2Description' && renderSuggestions('product2Description', true)}
+                      {activeField === 'product2Description' && (
+                        <div className="flex justify-center my-3">
+                          <button
+                            type="button"
+                            className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
+                            onClick={() => regenerateSuggestions('product2Description')}
+                          >
+                            <BiRevision className='mx-2' />
+                            <span> Regenerate Suggestions</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
 
                     {/* Product 3 */}
@@ -120,23 +189,47 @@ export default function FourthForm() {
                       <input
                         type="text"
                         name="product3Name"
-                        value={fourthForm.product3Name.answer}
+                        value={fourthForm.product3Name?.answer || ''}
                         onChange={handleChange}
-                        onClick={() => setActiveField('product3Name')}
+                        onClick={() => handleClickField('product3Name')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       />
                       {activeField === 'product3Name' && renderSuggestions('product3Name')}
+                      {activeField === 'product3Name' && (
+                        <div className="flex justify-center my-3">
+                          <button
+                            type="button"
+                            className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
+                            onClick={() => regenerateSuggestions('product3Name')}
+                          >
+                            <BiRevision className='mx-2' />
+                            <span> Regenerate Suggestions</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
                     <div>
                       <label className="font-bold text-lg text-white">Product or Service 3 Description (optional)</label>
                       <textarea
                         name="product3Description"
-                        value={fourthForm.product3Description.answer}
+                        value={fourthForm.product3Description?.answer || ''}
                         onChange={handleChange}
-                        onClick={() => setActiveField('product3Description')}
+                        onClick={() => handleClickField('product3Description')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       ></textarea>
                       {activeField === 'product3Description' && renderSuggestions('product3Description', true)}
+                      {activeField === 'product3Description' && (
+                        <div className="flex justify-center my-3">
+                          <button
+                            type="button"
+                            className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
+                            onClick={() => regenerateSuggestions('product3Description')}
+                          >
+                            <BiRevision className='mx-2' />
+                            <span> Regenerate Suggestions</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
 
                     {/* Product 4 */}
@@ -146,23 +239,47 @@ export default function FourthForm() {
                       <input
                         type="text"
                         name="product4Name"
-                        value={fourthForm.product4Name.answer}
+                        value={fourthForm.product4Name?.answer || ''}
                         onChange={handleChange}
-                        onClick={() => setActiveField('product4Name')}
+                        onClick={() => handleClickField('product4Name')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       />
                       {activeField === 'product4Name' && renderSuggestions('product4Name')}
+                      {activeField === 'product4Name' && (
+                        <div className="flex justify-center my-3">
+                          <button
+                            type="button"
+                            className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
+                            onClick={() => regenerateSuggestions('product4Name')}
+                          >
+                            <BiRevision className='mx-2' />
+                            <span> Regenerate Suggestions</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
                     <div>
                       <label className="font-bold text-lg text-white">Product or Service 4 Description (optional)</label>
                       <textarea
                         name="product4Description"
-                        value={fourthForm.product4Description.answer}
+                        value={fourthForm.product4Description?.answer || ''}
                         onChange={handleChange}
-                        onClick={() => setActiveField('product4Description')}
+                        onClick={() => handleClickField('product4Description')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       ></textarea>
                       {activeField === 'product4Description' && renderSuggestions('product4Description', true)}
+                      {activeField === 'product4Description' && (
+                        <div className="flex justify-center my-3">
+                          <button
+                            type="button"
+                            className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
+                            onClick={() => regenerateSuggestions('product4Description')}
+                          >
+                            <BiRevision className='mx-2' />
+                            <span> Regenerate Suggestions</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
 
                     {/* Product 5 */}
@@ -172,24 +289,51 @@ export default function FourthForm() {
                       <input
                         type="text"
                         name="product5Name"
-                        value={fourthForm.product5Name.answer}
+                        value={fourthForm.product5Name?.answer || ''}
                         onChange={handleChange}
-                        onClick={() => setActiveField('product5Name')}
+                        onClick={() => handleClickField('product5Name')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       />
                       {activeField === 'product5Name' && renderSuggestions('product5Name')}
+                      {activeField === 'product5Name' && (
+                        <div className="flex justify-center my-3">
+                          <button
+                            type="button"
+                            className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
+                            onClick={() => regenerateSuggestions('product5Name')}
+                          >
+                            <BiRevision className='mx-2' />
+                            <span> Regenerate Suggestions</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
                     <div>
                       <label className="font-bold text-lg text-white">Product or Service 5 Description (optional)</label>
                       <textarea
                         name="product5Description"
-                        value={fourthForm.product5Description.answer}
+                        value={fourthForm.product5Description?.answer || ''}
                         onChange={handleChange}
-                        onClick={() => setActiveField('product5Description')}
+                        onClick={() => handleClickField('product5Description')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
                       ></textarea>
                       {activeField === 'product5Description' && renderSuggestions('product5Description', true)}
+                      {activeField === 'product5Description' && (
+                        <div className="flex justify-center my-3">
+                          <button
+                            type="button"
+                            className="mt-4 flex items-center justify-between px-3 border border-indigo-600 bg-black text-white rounded-lg py-3 font-semibold hover:bg-indigo-800 transform transition duration-500 hover:scale-105 shadow-lg"
+                            onClick={() => regenerateSuggestions('product5Description')}
+                          >
+                            <BiRevision className='mx-2' />
+                            <span> Regenerate Suggestions</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
+                    <button type="submit" className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg">
+                      Submit
+                    </button>
                   </form>
                 </div>
               </div>

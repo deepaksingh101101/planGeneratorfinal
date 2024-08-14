@@ -1,17 +1,26 @@
-// src/api/openai.js
 import axios from 'axios';
 
 export const getSuggestionsFromOpenAI = async (formData, activeField) => {
   const apiKey = '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';
 
-  const prompt = `
-    Based on the following form data, provide four distinct suggestions for the third form fields.
+  let prompt = `
+    Based on the following form data, provide four distinct suggestions for the ${activeField.startsWith('product') ? 'fourth' : 'third'} form fields.
     First Form (Business Plan Objective):
     ${formData.firstForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
     Second Form (Basic Business Information):
     ${formData.secondForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
-    Third Form Question(Suggestion should have maximum 10 words):
-    - ${activeField}: What type of customers will you target?
+  `;
+
+  if (formData.thirdForm && formData.thirdForm.length > 0) {
+    prompt += `
+    Third Form (Customer Targeting):
+    ${formData.thirdForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
+    `;
+  }
+
+  prompt += `
+    ${activeField.startsWith('product') ? 'Fourth Form Question' : 'Third Form Question'} (Suggestion should have maximum 10 words):
+    - ${activeField}: ${activeField.startsWith('product') ? 'What type of product or service will you offer?' : 'What type of customers will you target?'}
     Suggestions:
     ${activeField}:
     1. [Suggestion 1]

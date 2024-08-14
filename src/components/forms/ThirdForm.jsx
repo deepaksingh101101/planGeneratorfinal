@@ -21,7 +21,7 @@ export default function ThirdForm() {
     try {
       const formData = {
         firstForm: Object.values(firstForm),
-        secondForm: Object.values(secondForm)
+        secondForm: Object.values(secondForm),
       };
 
       const suggestionsFromAPI = await getSuggestionsFromOpenAI(formData, field);
@@ -32,13 +32,8 @@ export default function ThirdForm() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(thirdForm);
-  };
-
   const regenerateSuggestions = (field) => {
-    setFetchedFields({ ...fetchedFields, [field]: false }); // Reset the fetched status to force fetch
+    setActiveField(field);
     fetchSuggestions(field, true);
   };
 
@@ -51,20 +46,23 @@ export default function ThirdForm() {
     }
   };
 
-  const renderSuggestions = (field) => {
-    return (
-      <div className="mt-2 flex flex-col space-y-2">
-        {suggestions[field]?.map((suggestion, index) => (
-          <div
-            key={index}
-            className="py-2 px-5 bg-indigo-800 rounded-lg cursor-pointer hover:bg-orange-700 w-full text-center"
-            onClick={() => dispatch(setThirdForm({ name: field, value: suggestion }))}
-          >
-            <span className='text-[15px]'>{suggestion}</span>
-          </div>
-        ))}
-      </div>
-    );
+  const renderSuggestions = (field) => (
+    <div className="mt-2 flex flex-col space-y-2">
+      {suggestions[field]?.map((suggestion, index) => (
+        <div
+          key={index}
+          className="py-2 px-5 bg-indigo-800 rounded-lg cursor-pointer hover:bg-orange-700 w-full text-center"
+          onClick={() => dispatch(setThirdForm({ name: field, value: suggestion }))}
+        >
+          <span className='text-[15px]'>{suggestion}</span>
+        </div>
+      ))}
+    </div>
+  );
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(thirdForm);
   };
 
   return (
@@ -88,7 +86,7 @@ export default function ThirdForm() {
                         onClick={() => handleClickField('customerGroup1Description')}
                         required
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
-                      ></input>
+                      />
                       {activeField === 'customerGroup1Description' && renderSuggestions('customerGroup1Description')}
                       {activeField === 'customerGroup1Description' && (
                         <div className="flex justify-center my-3">
@@ -134,7 +132,7 @@ export default function ThirdForm() {
                         onChange={handleCustomerGroupChange}
                         onClick={() => handleClickField('customerGroup2Description')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
-                      ></input>
+                      />
                       {activeField === 'customerGroup2Description' && renderSuggestions('customerGroup2Description')}
                       {activeField === 'customerGroup2Description' && (
                         <div className="flex justify-center my-3">
@@ -179,7 +177,7 @@ export default function ThirdForm() {
                         onChange={handleCustomerGroupChange}
                         onClick={() => handleClickField('customerGroup3Description')}
                         className="mt-4 p-4 border border-gray-300 rounded-lg w-full"
-                      ></input>
+                      />
                       {activeField === 'customerGroup3Description' && renderSuggestions('customerGroup3Description')}
                       {activeField === 'customerGroup3Description' && (
                         <div className="flex justify-center my-3">
