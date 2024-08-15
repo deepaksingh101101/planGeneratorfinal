@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom";
 import { logo } from "../assets";
-import Button from "./Button";
 
 const Header = () => {
   return (
@@ -11,9 +11,11 @@ const Header = () => {
           <img src={logo} width={190} height={40} alt="Tasweeqy.ai" />
         </a>
 
-        <Button className="lg:flex" href="#login">
-          Continue
-        </Button>
+<Link to='/sign' >
+        <button href="/learn-more" className=" px-[80px] continueBtnShadow transitionC hover:scale-105 bg-orange-700 text-white  py-3 text-[17px] font-bold rounded-md  ">
+               Login
+            </button>
+            </Link>
       </div>
     </nav>
   );

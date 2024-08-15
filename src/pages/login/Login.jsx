@@ -35,7 +35,7 @@ export default function Login() {
                   placeholder="Password"
                 />
                 <button
-                  className="mt-5 tracking-wide font-semibold bg-[#5A1C8B] text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-5 tracking-wide continueBtnShadow transitionC hover:scale-105 font-semibold bg-[#C2410C] text-gray-100 w-full py-4 rounded-lg transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                 >
                   <svg
                     className="w-6 h-6 -ml-2"
@@ -56,7 +56,7 @@ export default function Login() {
                   Already have an account?{" "}
                   <Link
                     to="/sign"
-                    className="text-indigo-500 border-b border-gray-500 border-dotted"
+                    className="text-[#C2410C] border-b border-gray-500 border-dotted"
                   >
                     Sign In
                   </Link>
