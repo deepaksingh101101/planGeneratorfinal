@@ -1,34 +1,34 @@
 import axios from 'axios';
 
-export const getSuggestionsFromOpenAI = async (formData, activeField) => {
-  const apiKey = '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';
+const apiKey = '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'; // Replace with your actual API key
 
+export const getSuggestionsFromOpenAI = async (formData, activeField) => {
   let prompt = `
-    Based on the following form data, provide four distinct suggestions for the ${activeField.startsWith('product') || activeField.startsWith('successDriver') || activeField.startsWith('weakness') ? 'fifth' : activeField.startsWith('investmentItem') ? 'sixth' : activeField.startsWith('product') ? 'fourth' : 'third'} form fields and all suggestions should be answers to questions.
+    Based on the following form data, provide four distinct suggestions for the ${activeField.startsWith('product') || activeField.startsWith('successDriver') || activeField.startsWith('weakness') ? 'fifth' : activeField.startsWith('investmentItem') ? 'sixth' : 'third'} form fields and all suggestions should be answers to questions.
     First Form (Business Plan Objective):
-    ${formData.firstForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
+    ${Object.values(formData.firstForm).map(item => `${item.question}: ${item.answer}`).join('\n')}
     Second Form (Basic Business Information):
-    ${formData.secondForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
+    ${Object.values(formData.secondForm).map(item => `${item.question}: ${item.answer}`).join('\n')}
   `;
 
-  if (formData.thirdForm && formData.thirdForm.length > 0) {
+  if (formData.thirdForm) {
     prompt += `
     Third Form (Customer Targeting):
-    ${formData.thirdForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
+    ${Object.values(formData.thirdForm).map(item => `${item.question}: ${item.answer}`).join('\n')}
     `;
   }
 
-  if (formData.fourthForm && formData.fourthForm.length > 0) {
+  if (formData.fourthForm) {
     prompt += `
     Fourth Form (Product or Service Details):
-    ${formData.fourthForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
+    ${Object.values(formData.fourthForm).map(item => `${item.question}: ${item.answer}`).join('\n')}
     `;
   }
 
-  if (formData.fifthForm && formData.fifthForm.length > 0) {
+  if (formData.fifthForm) {
     prompt += `
     Fifth Form (Success Drivers and Weaknesses):
-    ${formData.fifthForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
+    ${Object.values(formData.fifthForm).map(item => `${item.question}: ${item.answer}`).join('\n')}
     `;
   }
 
@@ -80,3 +80,123 @@ export const getSuggestionsFromOpenAI = async (formData, activeField) => {
 
   return parseSuggestions(activeField);
 };
+
+export const getBusinessPlanFromOpenAI = async (formData) => {
+  const prompt = `
+  Based on the following form data, generate a detailed marketing strategy report with all the sections and sub-sections. Ensure each section adheres to the specified word count.
+
+  First Form (Business Plan Objective):
+  ${Object.values(formData.firstForm).map(item => `${item.question}: ${item.answer}`).join('\n')}
+  
+  Second Form (Basic Business Information):
+  ${Object.values(formData.secondForm).map(item => `${item.question}: ${item.answer}`).join('\n')}
+  
+  Third Form (Customer Targeting):
+  ${Object.values(formData.thirdForm).map(item => `${item.question}: ${item.answer}`).join('\n')}
+  
+  Fourth Form (Product or Service Details):
+  ${Object.values(formData.fourthForm).map(item => `${item.question}: ${item.answer}`).join('\n')}
+  
+  Fifth Form (Success Drivers and Weaknesses):
+  ${Object.values(formData.fifthForm).map(item => `${item.question}: ${item.answer}`).join('\n')}
+  
+  Sixth Form (Investment Items):
+  ${formData.sixthForm.investmentItems.map(item => `Item: ${item.item.answer}, Amount: ${item.amount.answer}`).join('\n')}
+  
+  Seventh Form (Financials):
+  ${Object.values(formData.seventhForm).map(item => `${item.question}: ${item.answer}`).join('\n')}
+  
+  Generate a detailed business plan with the following sections and sub-sections, adhering to the specified word counts. Do not include any asterisks, hashtags, word counts, hyphens, or extra characters.
+
+  1. Executive Summary (150 words)
+     Overview of Business (50 words)
+     Marketing Objectives (50 words)
+     Key Strategies (50 words)
+  2. Business Overview
+     Company Information (25 words)
+     Business Model (45 words)
+     Unique Selling Proposition (USP) (55 words)
+  3. Market Research
+     Target Market
+       Customer Segments (50 words)
+       Geographical Focus (40 words)
+       Market Size & Growth (35 words)
+     Competitor Analysis
+       Direct Competitors
+       Indirect Competitors
+       SWOT Analysis
+         Strengths (40 words)
+         Weaknesses (40 words)
+         Opportunities (40 words)
+         Threats (40 words)
+  4. Customer Insights
+     Buyer Personas (55 words)
+     Customer Journey (55 words)
+     Customer Pain Points (55 words)
+  5. Brand Positioning
+     Current Brand Perception (55 words)
+     Desired Brand Positioning (55 words)
+     Brand Values & Mission (55 words)
+     Brand Voice & Messaging (55 words)
+  6. Marketing Objectives & Goals (300 words)
+     Primary Objectives (110 words)
+     SMART Goals (110 words)
+     Key Performance Indicators (KPIs) (110 words)
+  7. Marketing Channels & Campaign Strategy
+     Channel Selection (70 words)
+     Campaign Strategies by Platform
+       1. Facebook & Instagram
+         Target Audience (65 words)
+         Content Strategy (65 words)
+         Ad Strategy (65 words)
+         Example Campaign (65 words)
+       2. LinkedIn
+         Target Audience (65 words)
+         Content Strategy (65 words)
+         Ad Strategy (65 words)
+         Example Campaign (65 words)
+  8. Budget & Resource Allocation
+     Overall Marketing Budget (100 words)
+     Channel-Specific Budgets (100 words)
+     Resource Allocation (100 words)
+  9. Timeline & Execution Plan
+     Campaign Timelines (100 words)
+     Milestones & Deadlines (100 words)
+     Team Responsibilities (100 words)
+  10. Performance Tracking & Optimization
+      Tracking Tools (100 words)
+      Reporting & Analysis (100 words)
+      Optimization Plan (100 words)
+  11. Legal & Compliance Considerations
+      Data Privacy & GDPR Compliance (150 words)
+      Advertising Regulations (150 words)
+  `;
+
+  const response = await axios.post(
+    'https://api.openai.com/v1/chat/completions',
+    {
+      model: 'gpt-4-turbo',
+      messages: [
+        {
+          role: 'system',
+          content: 'You are an assistant that helps with generating detailed business plans based on provided data.'
+        },
+        {
+          role: 'user',
+          content: prompt
+        }
+      ],
+      max_tokens: 2000,
+      temperature: 0.7
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+    }
+  );
+
+  return response.data.choices[0].message.content.trim();
+};
+
