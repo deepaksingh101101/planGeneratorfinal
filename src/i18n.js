@@ -4,12 +4,12 @@ import { initReactI18next } from 'react-i18next';
 i18n
   .use(initReactI18next)
   .init({
-    debug: true,
-    fallbackLng: 'en',
+    debug: true, // Enable debug mode for development
+    fallbackLng: 'en', // Default language if translation is not available
     interpolation: {
-      escapeValue: false, // not needed for react as it escapes by default
+      escapeValue: false, // React already escapes values by default
     },
-    // language resources
+    // Language resources
     resources: {
       en: {
         translation: {
@@ -52,7 +52,21 @@ i18n
           "its_not_just_us": "It's not just us.",
           "mentioned_in": "Mentioned in...",
           "language_support": "Language Support",
-          "language_support_description": "At the end of the plan creation process you can choose to generate a plan in multiple languages including.."
+          "language_support_description": "At the end of the plan creation process you can choose to generate a plan in multiple languages including..",
+          "step1": "Step 1",
+          "step2": "Step 2",
+          "step3": "Step 3",
+          "step4": "Step 4",
+          "enter_business_information": "Enter Business Information",
+          "business_info_description": "Only basic business information is required e.g. business name, number of employees, and a little financial data.",
+          "edit_and_save": "Edit and Save",
+          "edit_plan_description": "Once your AI plan is generated, you can easily edit the plan with our 'Talk To Plan' feature. You can input what you want changed and AI will take care of the rest.",
+          "export": "Export",
+          "export_description": "You can export the final business plan in PDF or Word format for your records or presentations.",
+          "working_process": "Working Process",
+          "how_it_works": "How it works?",
+          "business_plan_description": "Our AI business plan generator guides you through a few questions. Once done, a business plan example will be generated.",
+          "explore_now": "Explore Now"
         }
       },
       ar: {
@@ -96,7 +110,21 @@ i18n
           "its_not_just_us": "ليس نحن فقط.",
           "mentioned_in": "مذكور في...",
           "language_support": "دعم اللغات",
-          "language_support_description": "في نهاية عملية إنشاء الخطة، يمكنك اختيار إنشاء خطة بعدة لغات بما في ذلك.."
+          "language_support_description": "في نهاية عملية إنشاء الخطة، يمكنك اختيار إنشاء خطة بعدة لغات بما في ذلك..",
+          "step1": "الخطوة 1",
+          "step2": "الخطوة 2",
+          "step3": "الخطوة 3",
+          "step4": "الخطوة 4",
+          "enter_business_information": "أدخل معلومات العمل",
+          "business_info_description": "تطلب فقط معلومات أساسية عن العمل مثل اسم العمل، عدد الموظفين، وبيانات مالية بسيطة.",
+          "edit_and_save": "تحرير وحفظ",
+          "edit_plan_description": "بمجرد إنشاء خطتك بالذكاء الاصطناعي، يمكنك بسهولة تحرير الخطة باستخدام ميزة 'تحدث إلى الخطة'. يمكنك إدخال ما تريد تغييره وسيقوم الذكاء الاصطناعي بالباقي.",
+          "export": "تصدير",
+          "export_description": "يمكنك تصدير خطة العمل النهائية بتنسيق PDF أو Word لسجلاتك أو عروضك التقديمية.",
+          "working_process": "عملية العمل",
+          "how_it_works": "كيف يعمل؟",
+          "business_plan_description": "يرشدك مولد خطة العمل بالذكاء الاصطناعي من خلال بعض الأسئلة. بمجرد الانتهاء، سيتم إنشاء مثال لخطة العمل.",
+          "explore_now": "استكشف الآن"
         }
       },
     }
