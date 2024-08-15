@@ -1,5 +1,10 @@
+import { useTranslation } from "react-i18next";
 import { AP_logo, Yahoo_logo, Market_logo, Bloomberg_logo, Medium_logo, Seeking_logo, Finanzen_logo, Benzinga_logo, Web10_logo } from "../assets";
 const Companies = () => {
+
+    const { t } = useTranslation();
+
+
     const companies_logo = [
         {
             url: "https://apnews.com/press-release/ein-presswire-newsmatics/artificial-intelligence-f08eb45f39d6c0bcbbc09119379744c2",
@@ -52,7 +57,7 @@ const Companies = () => {
         <div className="section flex justify-center" >
             <div className="content container mx-auto px-4 max-w-[1300px]">
                 <div className="block-heading">
-                    <h1 className="text-start text-[32px] lg:text-[54px] font-medium mb-6">Mentioned in..</h1>
+                    <h1 className="text-start text-[32px] lg:text-[54px] font-medium mb-6">{t('mentioned_in')}</h1>
                 </div>
                 <br />
                 <div className="flex flex-wrap gap-10 justify-center items-center lg:mt-5">

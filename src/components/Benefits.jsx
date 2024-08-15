@@ -1,17 +1,55 @@
-import { benefits } from "../constants";
 import Heading from "./Heading";
 import Section from "./Section";
 import Arrow from "../assets/svg/Arrow";
 import { GradientLight } from "./design/Benefits";
 import ClipPath from "../assets/svg/ClipPath";
+import {
+  benefitIcon1,
+  benefitIcon2,
+  benefitIcon3,
+  benefitImage2,
+} from "../assets";
+import { useTranslation } from "react-i18next";
 
 const Benefits = () => {
+
+  const { t, i18n } = useTranslation();
+
+ const benefits = [
+    {
+      id: "0",
+      title: t('entrepreneurs_title'),
+      text: t('entrepreneurs_description'),
+      backgroundUrl: "./src/assets/whoIsThisFor/card-1.svg",
+      iconUrl: benefitIcon1,
+      imageUrl: benefitImage2,
+    },
+    {
+      id: "1",
+      title: t('business_owners_title'),
+      text: t('business_owners_description'),
+      backgroundUrl: "./src/assets/whoIsThisFor/card-2.svg",
+      iconUrl: benefitIcon2,
+      imageUrl: benefitImage2,
+      light: true,
+    },
+    {
+      id: "2",
+      title: t('anyone_title'),
+      text: t('anyone_description'),
+      backgroundUrl: "./src/assets/whoIsThisFor/card-3.svg",
+      iconUrl: benefitIcon3,
+      imageUrl: benefitImage2,
+    }
+  ];
+
+
   return (
     <Section id="features">
       <div className="container relative z-2">
         <Heading
           className="md:max-w-md lg:max-w-2xl"
-          title="Who is this for?"
+          title={t('who_is_this_for')}
         />
 
         <div className="flex flex-wrap gap-10 mb-10">

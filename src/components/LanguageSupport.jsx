@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 
 
 const languages = [
@@ -16,13 +17,16 @@ const languages = [
         lang: "Arabic",
     },
 ]
+
 export default function LanguageSupport() {
+    const { t } = useTranslation();
+
   return (
     <div className="section flex justify-center my-16" >
     <div className="content container mx-auto px-4 max-w-[1300px]">
         <div className="block-heading">
-            <h1 className="text-start text-[32px] lg:text-[54px] font-medium mb-6">Language Support</h1>
-            <p className='mb-[28px]'>At the end of the plan creation process you can choose to generate a plan in multiple languages including..</p>
+            <h1 className="text-start text-[32px] lg:text-[54px] font-medium mb-6">{t('language_support')}</h1>
+            <p className='mb-[28px]'>{t('language_support_description')}</p>
         </div>
         <br />
         <div className="grid grid-cols-2 gap-10 justify-center items-center">

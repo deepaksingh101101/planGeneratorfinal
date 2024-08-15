@@ -1,4 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 const Notification = ({ className, title }) => {
+  const { t } = useTranslation();
+
   return (
     <div
       className={`${
@@ -8,15 +12,15 @@ const Notification = ({ className, title }) => {
       <div className="flex-1">
         <h6 className="mb-1 font-semibold text-base">{title}</h6>
         <p className="text-sm text-white">
-          Our AI Business Plan Generator can create a comprehensive business plan for you in under 15 minutes. Fill out simple forms, select your preferred language, and get started on your path to success today!
+          {t('notificationDescription')}
         </p>
         <div className="flex items-center justify-between mt-2">
           <button
             className="py-1 px-3 bg-navy-500 text-white rounded-md hover:bg-navy-700 transition-all duration-200"
           >
-            Try It Now
+            {t('tryItNow')}
           </button>
-          <div className="body-2 text-n-13">1m ago</div>
+          <div className="body-2 text-n-13">{t('timeAgo')}</div>
         </div>
       </div>
     </div>
