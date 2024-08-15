@@ -7,6 +7,8 @@ import Form from "./pages/form/FormPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import GeneratePlan from "./pages/plan/GeneratePlan";
+import Login from "./pages/login/Login";
+import Sign from "./pages/sign/Sign";
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/form" element={<Form />} />
         <Route path="/generatePlan" element={<GeneratePlan />} />
+        <Route path="/register" element={<Login />} />
+        <Route path="/sign" element={<Sign />} />
       </Routes>
       <Footer />
     </BrowserRouter>
