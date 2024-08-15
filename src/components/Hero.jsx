@@ -4,14 +4,24 @@ import Section from "./Section";
 import { BackgroundCircles, BottomLine, Gradient } from "./design/Hero";
 import { heroIcons } from "../constants";
 import { ScrollParallax } from "react-just-parallax";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Generating from "./Generating";
 import Notification from "./Notification";
 import CompanyLogos from "./CompanyLogos";
 import robo from '../assets/images/robo.jpg'
-import { WhoIsThisFor } from "./design/WhoIsThisFor";
-
+import { english } from "../assets";
+import { arabic } from "../assets";
 const Hero = () => {
+
+  const [showLanguage, setShowLanguage] = useState(false)
+  const handleLanguageClick=()=>{
+    setShowLanguage(true)
+  }
+  const handleLanguageChange=(ln)=>{
+    setShowLanguage(false)
+  }
+
+
   const parallaxRef = useRef(null);
 
   return (
@@ -49,6 +59,14 @@ const Hero = () => {
             </button>
            
           </div>
+
+<div className="mt-5  flex items-center justify-center ">
+<span className="cursor-pointer" onClick={handleLanguageClick}  >Change Language</span>
+{showLanguage && <><img src={english} className="h-6 ms-5" onClick={()=>handleLanguageChange("en")}  alt="English" />
+<img src={arabic} className="h-6 mx-2 " onClick={()=>handleLanguageChange("ar")}  alt="English" />
+</>
+}
+</div>
         </div>
         <div className="relative max-w-[23rem] mx-auto md:max-w-5xl xl:mb-24">
           <div className="relative z-1 p-0.5 rounded-2xl bg-conic-gradient">

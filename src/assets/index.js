@@ -19,6 +19,8 @@ import disc02 from "./disc-02.svg";
 import chromecast from "./chrome-cast.svg";
 import sliders04 from "./sliders-04.svg";
 import loading from "./loading.png";
+import english from "./english.png";
+import arabic from "./arabic.png";
 import background from "./background.jpg";
 
 import curve from "./hero/curve.png";
@@ -167,5 +169,7 @@ export {
   instagram,
   telegram,
   twitter,
-  logo
+  logo,
+  english,
+  arabic,
 };
