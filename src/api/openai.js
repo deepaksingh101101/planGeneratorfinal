@@ -4,7 +4,7 @@ export const getSuggestionsFromOpenAI = async (formData, activeField) => {
   const apiKey = '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';
 
   let prompt = `
-    Based on the following form data, provide four distinct suggestions for the ${activeField.startsWith('product') || activeField.startsWith('successDriver') || activeField.startsWith('weakness') ? 'fifth' : activeField.startsWith('product') ? 'fourth' : 'third'} form fields and all suggestions should be answer of questions.
+    Based on the following form data, provide four distinct suggestions for the ${activeField.startsWith('product') || activeField.startsWith('successDriver') || activeField.startsWith('weakness') ? 'fifth' : activeField.startsWith('investmentItem') ? 'sixth' : activeField.startsWith('product') ? 'fourth' : 'third'} form fields and all suggestions should be answers to questions.
     First Form (Business Plan Objective):
     ${formData.firstForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
     Second Form (Basic Business Information):
@@ -25,9 +25,16 @@ export const getSuggestionsFromOpenAI = async (formData, activeField) => {
     `;
   }
 
+  if (formData.fifthForm && formData.fifthForm.length > 0) {
+    prompt += `
+    Fifth Form (Success Drivers and Weaknesses):
+    ${formData.fifthForm.map(item => `${item.question}: ${item.answer}`).join('\n')}
+    `;
+  }
+
   prompt += `
-    ${activeField.startsWith('product') || activeField.startsWith('successDriver') || activeField.startsWith('weakness') ? 'Fifth Form Question' : activeField.startsWith('product') ? 'Fourth Form Question' : 'Third Form Question'} (Suggestion should have maximum 10 words):
-    - ${activeField}: ${activeField.startsWith('product') ? 'What type of product or service will you offer? give suggestions for this question' : activeField.startsWith('successDriver') ? 'What success drivers will you focus on? give suggestions for this' : activeField.startsWith('weakness') ? 'What are potential weaknesses?' : 'What type of customers will you target?'}
+    ${activeField.startsWith('product') || activeField.startsWith('successDriver') || activeField.startsWith('weakness') ? 'Fifth Form Question' : activeField.startsWith('investmentItem') ? 'Sixth Form Question' : 'Third Form Question'} (Suggestion should have a maximum of 10 words):
+    - ${activeField}: ${activeField.startsWith('product') ? 'What type of product or service will you offer? Give suggestions for this question' : activeField.startsWith('successDriver') ? 'What success drivers will you focus on? Give suggestions for this' : activeField.startsWith('weakness') ? 'What are potential weaknesses?' : activeField.startsWith('investmentItem') ? 'What are the possible areas of investment for your business?' : 'What type of customers will you target?'}
     Suggestions:
     ${activeField}:
     1. [Suggestion 1]

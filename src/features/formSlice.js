@@ -45,6 +45,8 @@ const initialState = {
     selectedCurrency: { question: 'Select plan currency (required)', answer: '' },
     investmentItems: [
       { item: { question: 'Investment Item (optional)', answer: '' }, amount: { question: 'Investment Amount', answer: '' } },
+      { item: { question: 'Investment Item (optional)', answer: '' }, amount: { question: 'Investment Amount', answer: '' } },
+      { item: { question: 'Investment Item (optional)', answer: '' }, amount: { question: 'Investment Amount', answer: '' } },
     ],
   },
   suggestions: {},
