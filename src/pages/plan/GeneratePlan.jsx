@@ -78,7 +78,7 @@ export default function GeneratePlan() {
             )}
           </div>
           <div className="mt-8 text-center">
-            <button onClick={toggleModal} className="px-4 py-2 bg-indigo-600 text-white rounded-lg">
+            <button onClick={toggleModal} className="px-4 py-2 bg-[#963FE5] text-white rounded-lg">
               Proceed to Full Plan
             </button>
           </div>
