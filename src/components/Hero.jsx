@@ -62,8 +62,8 @@ const Hero = () => {
 
 <div className="mt-5  flex items-center justify-center ">
 <span className="cursor-pointer" onClick={handleLanguageClick}  >Change Language</span>
-{showLanguage && <><img src={english} className="h-6 ms-5" onClick={()=>handleLanguageChange("en")}  alt="English" />
-<img src={arabic} className="h-6 mx-2 " onClick={()=>handleLanguageChange("ar")}  alt="English" />
+{showLanguage && <><img src={english} className="h-6 ms-5 cursor-pointer" onClick={()=>handleLanguageChange("en")}  alt="English" />
+<img src={arabic} className="h-6 mx-2 cursor-pointer " onClick={()=>handleLanguageChange("ar")}  alt="English" />
 </>
 }
 </div>
