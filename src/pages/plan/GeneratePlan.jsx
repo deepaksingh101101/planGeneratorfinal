@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getBusinessPlanFromOpenAI, getSuggestionsFromOpenAI } from '../../api/openai';
+import BusinessPlanFooter from '../../components/BusinessPlanFooter';
 
 export default function GeneratePlan() {
   const formData = useSelector((state) => state.form);
@@ -56,8 +57,9 @@ export default function GeneratePlan() {
   };
 
   return (
-    <div className="p-6 mt-20 min-h-screen">
-      <div className="max-w-4xl mx-auto shadow-lg rounded-lg p-6">
+    <>
+    <div className="p-6 mt-20 min-h-screen" >
+      <div style={{border:"1px solid #26242C"}} className=" max-w-4xl mx-auto shadow-lg rounded-lg p-6">
         <h1 className="text-3xl font-bold mb-4">Marketing Strategy Report</h1>
         <p className="text-gray-700 mb-6">
           We've generated parts of the plan for you. To get the full plan, go to the end of the page to proceed.
@@ -76,5 +78,8 @@ export default function GeneratePlan() {
         </div>
       </div>
     </div>
+  
+
+    </>
   );
 }
