@@ -1,4 +1,3 @@
-// src/features/formSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -42,6 +41,12 @@ const initialState = {
     weakness2: { question: 'Weakness 2 (optional)', answer: '' },
     weakness3: { question: 'Weakness 3 (optional)', answer: '' },
   },
+  sixthForm: {
+    selectedCurrency: { question: 'Select plan currency (required)', answer: '' },
+    investmentItems: [
+      { item: { question: 'Investment Item (optional)', answer: '' }, amount: { question: 'Investment Amount', answer: '' } },
+    ],
+  },
   suggestions: {},
 };
 
@@ -69,11 +74,21 @@ const formSlice = createSlice({
       const { name, value } = action.payload;
       state.fifthForm[name].answer = value;
     },
+    setSixthForm: (state, action) => {
+      const { name, value, index } = action.payload;
+      if (name === 'investmentItems') {
+        state.sixthForm.investmentItems = value;
+      } else if (index !== undefined) {
+        state.sixthForm.investmentItems[index][name].answer = value;
+      } else {
+        state.sixthForm[name].answer = value;
+      }
+    },
     setSuggestions(state, action) {
       state.suggestions = action.payload;
     },
   }
 });
 
-export const { setFirstForm, setSecondForm, setThirdForm, setFourthForm, setFifthForm ,setSuggestions} = formSlice.actions;
+export const { setFirstForm, setSecondForm, setThirdForm, setFourthForm, setFifthForm, setSixthForm, setSuggestions } = formSlice.actions;
 export default formSlice.reducer;
