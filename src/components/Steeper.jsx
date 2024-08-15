@@ -7,6 +7,7 @@ import ThirdForm from './forms/ThirdForm';
 import FourthForm from './forms/FourthForm';
 import FifthForm from './forms/FifthForm';
 import SixthForm from './forms/SixthForm';
+import SeventhForm from './forms/SeventhForm';
 
 const Steeper = () => {
     const steps = [
@@ -80,6 +81,12 @@ const Steeper = () => {
                     <>
                         {/* Success Drivers and Weaknesses */}
                        <SixthForm/>
+                    </>
+                )}
+                {index === 6 && (
+                    <>
+                        {/* Success Drivers and Weaknesses */}
+                       <SeventhForm/>
                     </>
                 )}
 

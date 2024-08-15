@@ -49,6 +49,26 @@ const initialState = {
       { item: { question: 'Investment Item (optional)', answer: '' }, amount: { question: 'Investment Amount', answer: '' } },
     ],
   },
+  seventhForm: {
+    firstYearRevenue: { question: 'Expected First Year Revenue (required)', answer: '' },
+    revenueGrowth: { question: 'How much do you expect your revenue to grow each year? (required)', answer: '' },
+    operationsCost: {
+      costOfGoodsSold: { question: 'Cost of Goods Sold', percent: '40', total: '' },
+      wagesAndBenefits: { question: 'Wages and Benefits', percent: '6', total: '' },
+      marketing: { question: 'Marketing', percent: '5', total: '' },
+      rent: { question: 'Rent', percent: '0', total: '' },
+      generalAndAdministrative: { question: 'General & Administrative', percent: '1', total: '' },
+      depreciation: { question: 'Depreciation', percent: '2', total: '' },
+      utilities: { question: 'Utilities', percent: '0', total: '' },
+      otherExpenses: { question: 'Other Expenses', percent: '1', total: '' },
+      interestExpenses: { question: 'Interest Expenses', percent: '0', total: '' },
+      incomeTaxes: { question: 'Income Taxes (from EBT)', percent: '20', total: '' },
+    },
+    firstYearTotalCost: { question: 'Your First Year Total Cost is', answer: '' },
+    firstYearNetProfit: { question: 'Your First Year Net Profit is', answer: '' },
+    netProfitMargin: { question: 'Your Net Profit Margin is', answer: '' },
+    planLanguage: { question: 'Select plan language (required)', answer: '' },
+  },
   suggestions: {},
 };
 
@@ -86,11 +106,19 @@ const formSlice = createSlice({
         state.sixthForm[name].answer = value;
       }
     },
+    setSeventhForm: (state, action) => {
+      const { name, value, subField } = action.payload;
+      if (subField) {
+        state.seventhForm[name][subField] = value;
+      } else {
+        state.seventhForm[name].answer = value;
+      }
+    },
     setSuggestions(state, action) {
       state.suggestions = action.payload;
     },
   }
 });
 
-export const { setFirstForm, setSecondForm, setThirdForm, setFourthForm, setFifthForm, setSixthForm, setSuggestions } = formSlice.actions;
+export const { setFirstForm, setSecondForm, setThirdForm, setFourthForm, setFifthForm, setSixthForm, setSuggestions ,setSeventhForm} = formSlice.actions;
 export default formSlice.reducer;
