@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiKey = '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'; // Replace with your actual API key
+const apiKey = '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'; // Replace with your actual API key
 
 export const getSuggestionsFromOpenAI = async (formData, activeField) => {
   let prompt = `
