@@ -60,7 +60,7 @@ const Hero = () => {
                {t('make_plan')}
             </button>
             </Link> 
-            <Link to='/login' ><button  href="/pricing"  style={{border:"2px solid #C2410C"}} className="login rounded-md font-bold px-2  btn-hover-effect hover:scale-105 transitionC  ">
+            <Link to='/register' ><button  href="/pricing"  style={{border:"2px solid #C2410C"}} className="login rounded-md font-bold px-2  btn-hover-effect hover:scale-105 transitionC  ">
               {t('login')}
             </button>
             </Link>
