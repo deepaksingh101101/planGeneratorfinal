@@ -12,6 +12,7 @@ import robo from '../assets/images/robo.jpg'
 import { english } from "../assets";
 import { arabic } from "../assets";
 import { useTranslation } from 'react-i18next';
+import { Link } from "react-router-dom";
 
 const Hero = () => {
 
@@ -55,12 +56,14 @@ const Hero = () => {
             {t('description')}
           </p>
           <div className="flex flex-wrap gap-6 justify-center ">
-            <button href="/learn-more" className=" px-[80px] continueBtnShadow bg-orange-700 text-white  py-4 font-bold rounded-md transitionC hover:scale-105 ">
+           <Link to='/form' ><button href="/learn-more" className=" px-[80px] continueBtnShadow bg-orange-700 text-white  py-4 font-bold rounded-md transitionC hover:scale-105 ">
                {t('make_plan')}
             </button>
-            <button  href="/pricing"  style={{border:"2px solid #C2410C"}} className="login rounded-md font-bold px-2  btn-hover-effect hover:scale-105 transitionC  ">
+            </Link> 
+            <Link to='/login' ><button  href="/pricing"  style={{border:"2px solid #C2410C"}} className="login rounded-md font-bold px-2  btn-hover-effect hover:scale-105 transitionC  ">
               {t('login')}
             </button>
+            </Link>
           </div>
 
           <div className="mt-5  flex items-center justify-center ">
