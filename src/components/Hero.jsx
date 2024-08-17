@@ -38,7 +38,7 @@ const Hero = () => {
       id="hero"
     >
       <div className="container relative" ref={parallaxRef}>
-        <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[3.875rem] md:mb-20 lg:mb-[6.25rem]">
+        <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[1.875rem] md:mb-10 lg:mb-[3.25rem]">
           <h1 className="h1 mb-6">
             {t('world_best')}{" "}
             <span className="inline-block relative">
@@ -60,13 +60,13 @@ const Hero = () => {
                {t('make_plan')}
             </button>
             </Link> 
-            <Link to='/register' ><button  href="/pricing"  style={{border:"2px solid #C2410C"}} className="login rounded-md font-bold px-2  btn-hover-effect hover:scale-105 transitionC  ">
+            <Link to='/register' ><button  href="/pricing"  style={{border:"2px solid #C2410C"}} className="login rounded-md font-bold px-2 py-4 btn-hover-effect hover:scale-105 transitionC   ">
               {t('login')}
             </button>
             </Link>
           </div>
 
-          <div className="mt-5  flex items-center justify-center ">
+          <div className="mt-10  flex items-center justify-center ">
             <span className="cursor-pointer" onClick={handleLanguageClick}>{t('change_language')}</span>
             {showLanguage && (
               <>

@@ -25,14 +25,14 @@ export default function LanguageSupport() {
     <div className="section flex justify-center my-16" >
     <div className="content container mx-auto px-4 max-w-[1300px]">
         <div className="block-heading">
-            <h1 className="text-start text-[32px] lg:text-[54px] font-medium mb-6">{t('language_support')}</h1>
-            <p className='mb-[28px]'>{t('language_support_description')}</p>
+            <h1 className="text-center text-[32px] lg:text-[54px] font-medium mb-6">{t('language_support')}</h1>
+            <p className='mb-[28px] text-center'>{t('language_support_description')}</p>
         </div>
         <br />
-        <div className="grid grid-cols-2 gap-10 justify-center items-center">
+        <div className="grid sm:grid-cols-2 gap-10 justify-center items-center">
             {languages.map((data, key) => (
                 <div key={key} style={{ opacity: 1, transform: 'none' }}>
-                    <div className="language_box flex shadow-on-hover p-3 rounded-3xl">
+                    <div className="language_box  flex hover:ring-1 p-3 rounded-3xl">
                         <div className="w-1/2 flex justify-center items-center">
                             {data.svg}
                         </div>
