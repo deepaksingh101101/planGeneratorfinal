@@ -7,9 +7,9 @@ export default function Sign() {
     <div className="min-h-screen bg-[#0E0C15] text-gray-100 flex justify-center mt-20">
       <div className="w-full m-0 bg-[#0E0C15] shadow sm:rounded-lg flex justify-center flex-1">
         <div className="flex-1 p-6 sm:p-12">
-          <div>
+          {/* <div>
             <img src={logo} className="w-32 h-8 mx-auto" alt="Logo" />
-          </div>
+          </div> */}
           <div className="mt-12 flex flex-col items-center">
             <h1 className="text-4xl xl:text-5xl font-extrabold text-white">
               Sign In
