@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { logo } from "../assets";
+import { logo,small_logo } from "../assets";
 
 const Header = () => {
   return (
@@ -8,7 +8,22 @@ const Header = () => {
     >
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4 justify-between">
         <a className="block w-[12rem] xl:mr-8" href="/">
-          <img src={logo} width={190} height={40} alt="Tasweeqy.ai" />
+           {/* Show the large logo on screens >= 500px */}
+           <img
+            src={logo}
+            width={190}
+            height={40}
+            alt="Tasweeqy.ai"
+            className="hidden sm:block"
+          />
+          {/* Show the small logo on screens < 500px */}
+          <img
+            src={small_logo}
+            width={60}
+            height={30}
+            alt="Tasweeqy.ai"
+            className="block sm:hidden"
+          />
         </a>
 
 <Link to='/sign' >
