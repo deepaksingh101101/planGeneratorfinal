@@ -11,13 +11,13 @@ import SeventhForm from './forms/SeventhForm';
 
 const Steeper = () => {
     const steps = [
-        { icon: "1", label: 'Step 1' },
-        { icon: "2", label: 'Step 2' },
-        { icon: "3", label: 'Step 3' },
-        { icon: "4", label: 'Step 4' },
-        { icon: "5", label: 'Step 5' },
-        { icon: "6", label: 'Step 6' },
-        { icon: "7", label: 'Step 7' }
+        { icon: "1", label: 'Step 1',title:"Select Business Plan Objective" },
+        { icon: "2", label: 'Step 2',title:"Enter Basic Business Information" },
+        { icon: "3", label: 'Step 3',title:"Enter Customer Group Details" },
+        { icon: "4", label: 'Step 4',title:"Enter Product or Service Details" },
+        { icon: "5", label: 'Step 5',title:"Enter Success Drivers" },
+        { icon: "6", label: 'Step 6',title:"Enter Currency and Initial Investment Details" },
+        { icon: "7", label: 'Step 7',title:"Enter Financial Details and Plan Language" }
     ];
 
     const [index, setIndex] = useState(0);
@@ -42,9 +42,10 @@ const Steeper = () => {
 
             <div className="container p-5" style={{ minHeight: "55vh" }}>
                 <h4 className="font-bold px-16 text-[#771E99]">{steps[index].label}</h4>
-                <h1 className=' ms-16 mt-10 text-3xl' >Select Business Plan Objective</h1>
                 {index === 0 && (
                     <>
+                                    <h1 className=' ms-16 mt-10 text-3xl' >Select Business Plan Objective</h1>
+
                         {/* Starting the form */}
                       <FirstForm/>
                     </>
@@ -52,6 +53,8 @@ const Steeper = () => {
 
                 {index === 1 && (
                     <>
+                                    <h1 className=' ms-16 mt-10 text-3xl' >Enter Basic Business Information</h1>
+
                         {/* Step 2 content */}
                      <SecondForm/>
                     </>
@@ -59,6 +62,8 @@ const Steeper = () => {
 
                 {index === 2 && (
                     <>
+                                                        <h1 className=' ms-16 mt-10 text-3xl' >Enter Customer Group Details</h1>
+
                         {/* Customer Group Details */}
                       <ThirdForm/>
                     </>
@@ -66,6 +71,8 @@ const Steeper = () => {
 
                 {index === 3 && (
                     <>
+                                                        <h1 className=' ms-16 mt-10 text-3xl' >Enter Product or Service Details</h1>
+
                         {/* Product or Service Details */}
                      <FourthForm/>
                     </>
@@ -73,18 +80,25 @@ const Steeper = () => {
 
                 {index === 4 && (
                     <>
+                                                        <h1 className=' ms-16 mt-10 text-3xl' >Enter Success Drivers</h1>
+
                         {/* Success Drivers and Weaknesses */}
                        <FifthForm/>
                     </>
                 )}
                 {index === 5 && (
                     <>
+                                                        <h1 className=' ms-16 mt-10 text-3xl' >Enter Currency and Initial Investment Details</h1>
+
+
                         {/* Success Drivers and Weaknesses */}
                        <SixthForm/>
                     </>
                 )}
                 {index === 6 && (
                     <>
+                                                        <h1 className=' ms-16 mt-10 text-3xl' >Enter Financial Details and Plan Language</h1>
+
                         {/* Success Drivers and Weaknesses */}
                        <SeventhForm/>
                     </>
