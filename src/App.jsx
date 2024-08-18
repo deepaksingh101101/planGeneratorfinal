@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import GeneratePlan from "./pages/plan/GeneratePlan";
 import Login from "./pages/login/Login";
 import Sign from "./pages/sign/Sign";
+import {IsLoggedIn} from "./middlewares/IsLoggedIn";
 
 
 const App = () => {
@@ -19,8 +20,18 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/form" element={<Form />} />
         <Route path="/generatePlan" element={<GeneratePlan />} />
-        <Route path="/register" element={<Login />} />
-        <Route path="/sign" element={<Sign />} />
+        {/* <Route path="/register" element={<Login />} /> */}
+        {/* <Route path="/sign" element={<Sign />} /> */}
+        <Route path="/register" element={
+          <IsLoggedIn>
+          <Login/>
+          </IsLoggedIn>
+          }/>
+        <Route path="/sign" element={
+          <IsLoggedIn>
+          <Sign/>
+          </IsLoggedIn>
+          }/>
       </Routes>
       <Footer />
     </BrowserRouter>
