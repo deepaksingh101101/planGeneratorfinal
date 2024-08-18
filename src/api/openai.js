@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const apiKey = import.meta.env.API_KEY; // Replace with your actual API key
+// const apiKey = "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"
 
 export const getSuggestionsFromOpenAI = async (formData, activeField) => {
   let prompt = `

@@ -51,7 +51,7 @@ export default function FirstForm() {
                       <div className="mt-4 space-y-4">
                         {business.map((objective) => (
                           <label key={objective.value} className="flex items-center text-white border border-indigo-600 rounded-lg p-4 hover:bg-indigo-800 cursor-pointer transform transition duration-500 hover:scale-105 shadow-lg">
-                            <input type="radio" name="objective" value={objective.value} checked={firstForm.businessType.answer === objective.label} onChange={handleBusinessTypeChange} className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded" />
+                            <input required type="radio" name="objective" value={objective.value} checked={firstForm.businessType.answer === objective.label} onChange={handleBusinessTypeChange} className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded" />
                             <span className="ml-2 text-start text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px]">{objective.label}</span>
                           </label>
                         ))}
@@ -62,7 +62,7 @@ export default function FirstForm() {
                       <div className="mt-4 space-y-4">
                         {businessOperationalStatus.map((status) => (
                           <label key={status.value} className="flex items-center text-white border border-indigo-600 rounded-lg p-4 hover:bg-indigo-800 cursor-pointer transform transition duration-500 hover:scale-105 shadow-lg">
-                            <input type="radio" name="status" value={status.value} checked={firstForm.businessPlan.answer === status.label} onChange={handleBusinessPlanChange} className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded" />
+                            <input required type="radio" name="status" value={status.value} checked={firstForm.businessPlan.answer === status.label} onChange={handleBusinessPlanChange} className="form-radio h-5 w-5 text-indigo-600 border-gray-300 rounded" />
                             <span className="ml-2 text-start text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px]">{status.label}</span>
                           </label>
                         ))}
