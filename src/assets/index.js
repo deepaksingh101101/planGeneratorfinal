@@ -77,7 +77,8 @@ import facebook from "./socials/facebook.svg";
 import instagram from "./socials/instagram.svg";
 import telegram from "./socials/telegram.svg";
 import twitter from "./socials/twitter.svg";
-import logo from "./bmslogog.png";
+import logo from "./logo.png";
+import small_logo from "./small_logo.png";
 
 
 import  AP_logo  from './companies/AP_logo.webp';
@@ -170,6 +171,7 @@ export {
   telegram,
   twitter,
   logo,
+  small_logo,
   english,
   arabic,
 };

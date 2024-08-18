@@ -57,7 +57,7 @@ const Companies = () => {
         <div className="section flex justify-center" >
             <div className="content container mx-auto px-4 max-w-[1300px]">
                 <div className="block-heading">
-                    <h1 className="text-start text-[32px] lg:text-[54px] font-medium mb-6">{t('mentioned_in')}</h1>
+                    <h1 className="text-center text-[32px] lg:text-[54px] font-medium mb-6">{t('mentioned_in')}</h1>
                 </div>
                 <br />
                 <div className="flex flex-wrap gap-10 justify-center items-center lg:mt-5">
