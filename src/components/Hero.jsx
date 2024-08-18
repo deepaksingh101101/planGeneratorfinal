@@ -90,7 +90,7 @@ const Hero = () => {
                   alt="AI"
                 />
 
-                <Generating className="absolute left-4 right-4 bottom-5 md:left-1/2 md:right-auto md:bottom-8 md:w-[31rem] md:-translate-x-1/2" />
+                <Generating className="flex items-center h-auto sm:h-[3.5rem] px-6 bg-gradient-to-r from-purple-800 to-purple-900 rounded-full shadow-lg absolute left-4 right-4 bottom-4 border-n-1/10 border lg:left-1/2 lg-right-auto lg:bottom-8 lg:-translate-x-1/2 text-white text-lg animate-bounce" />
 
                 <ScrollParallax isAbsolutelyPositioned>
                   <Notification

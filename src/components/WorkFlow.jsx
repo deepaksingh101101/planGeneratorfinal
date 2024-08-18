@@ -50,7 +50,7 @@ export default function WorkFlow() {
           </div>
           <div className="ml-0 md:ml-12 lg:w-2/3 sticky">
             <div className="container mx-auto w-full h-full">
-              <div className="relative wrap overflow-hidden p-10 h-full">
+              <div className="relative wrap overflow-hidden sm:p-10 h-full">
                 <div
                   className="border-2 border-yellow-555 absolute h-full"
                   style={{ right: '50%', border: '2px solid #C2410C', borderRadius: '1%' }}

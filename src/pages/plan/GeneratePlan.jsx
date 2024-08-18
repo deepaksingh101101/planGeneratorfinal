@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { getBusinessPlanFromOpenAI, getSuggestionsFromOpenAI } from '../../api/openai';
 import BusinessPlanFooter from '../../components/BusinessPlanFooter';
 import PricingCom from '../../components/PricingCom';
+import PlanCard from '../../components/planCard/PlanCard';
 
 export default function GeneratePlan() {
   const formData = useSelector((state) => state.form);
@@ -77,6 +78,7 @@ export default function GeneratePlan() {
               renderPlanContent(businessPlan)
             )}
           </div>
+          <PlanCard/>
           <div className="mt-8 text-center">
             <button onClick={toggleModal} className="px-4 py-2 bg-[#963FE5] text-white rounded-lg">
               Proceed to Full Plan

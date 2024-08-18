@@ -8,7 +8,7 @@ const Footer = () => {
             <p> create a business plan in just 15 minutes with our AI business plan generator </p>
             <div className="flex  mt-3 lg:mt-10 justify-center my-10">
             <div className="flex flex-wrap gap-6 justify-center ">
-          <button href="/learn-more" className=" px-[80px] continueBtnShadow bg-orange-700 text-white  py-4 font-bold rounded-md transitionC hover:scale-105 ">
+          <button href="/learn-more" className=" px-[70px] continueBtnShadow bg-orange-700 text-white  py-4 font-bold rounded-md transitionC hover:scale-105 ">
                Make Business Plan
             </button>
             <button  href="/pricing"  style={{border:"2px solid #C2410C"}} className="login rounded-md font-bold px-2 py-4 btn-hover-effect hover:scale-105 transitionC  ">

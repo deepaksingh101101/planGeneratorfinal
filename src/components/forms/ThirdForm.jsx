@@ -68,11 +68,11 @@ export default function ThirdForm() {
   return (
     <div className="relative min-h-screen grid bg-transparent">
       <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 w-full">
-        <div className="md:flex md:items-center md:justify-left w-full p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none">
+        <div className="md:flex md:items-center md:justify-left w-full sm:p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none">
           <div className="w-full space-y-12">
             <div className="lg:text-left text-center">
               <div className="flex items-center justify-center">
-                <div className="flex flex-col w-full border border-gray-900 rounded-lg px-0 md:px-8 lg:px-8 py-10">
+                <div className="flex flex-col w-full border border-gray-900 rounded-lg px-2 md:px-8 lg:px-8 py-10">
                   <form onSubmit={handleSubmit} className="flex flex-col space-y-8 mt-10">
                     {/* Customer Group 1 */}
                     <div>

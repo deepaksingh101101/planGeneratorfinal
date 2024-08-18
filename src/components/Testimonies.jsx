@@ -74,7 +74,7 @@ export const Testimonies = () => {
             <div key={testimony.id} className={`space-y-8 `}>
               <div className="relative group">
                 <div
-                  className="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 blur duration-400 group-hover:opacity-100 group-hover:duration-200"
+                  className="absolute transition rounded-lg opacity-25 -inset-1 bg-gradient-to-r from-orange-600 to-orange-300 blur  "
                 ></div>
                 <a href={testimony.twitter} className="cursor-pointer">
                   <div
