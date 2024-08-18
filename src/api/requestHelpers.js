@@ -2,8 +2,8 @@ import  axios  from "axios";
 
 
 const api=axios.create({
-    // baseURL:"https://plan-backend.vercel.app/",
-    baseURL:"http://localhost:5000",
+    baseURL:"https://plan-backend.vercel.app/",
+    // baseURL:"http://localhost:5000",
     // baseURL:"https://43c1-2405-201-d03f-61ee-bce8-a669-5154-76a.ngrok-free.app",
     timeout:10000,
 })
