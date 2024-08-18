@@ -8,8 +8,11 @@ import FourthForm from './forms/FourthForm';
 import FifthForm from './forms/FifthForm';
 import SixthForm from './forms/SixthForm';
 import SeventhForm from './forms/SeventhForm';
+import { useSelector } from 'react-redux';
 
 const Steeper = () => {
+    const { firstForm } = useSelector((state) => state.form);
+
     const steps = [
         { icon: "1", label: 'Step 1',title:"Select Business Plan Objective" },
         { icon: "2", label: 'Step 2',title:"Enter Basic Business Information" },
@@ -23,12 +26,15 @@ const Steeper = () => {
     const [index, setIndex] = useState(0);
 
     const handleIncreaseIndex = () => {
-        setIndex((prevIndex) => (prevIndex < steps.length - 1 ? prevIndex + 1 : prevIndex));
+            setIndex((prevIndex) => (prevIndex < steps.length - 1 ? prevIndex + 1 : prevIndex));
+      
     };
 
     const handleDecreaseIndex = () => {
         setIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
     };
+
+    
 
     return (
         <>
