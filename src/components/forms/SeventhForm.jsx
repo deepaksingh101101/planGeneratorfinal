@@ -47,11 +47,11 @@ export default function SeventhForm() {
 
   return (
     <div className="relative min-h-screen grid bg-transparent">
-      <div className="flex flex-col items-center justify-center w-full p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none">
+      <div className="flex flex-col items-center justify-center w-full sm:p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none">
         <div className="w-full space-y-12">
           <div className="text-center">
             <div className="flex items-center justify-center">
-              <div className="flex flex-col w-full border border-gray-900 rounded-lg px-0 md:px-8 lg:px-8 py-10">
+              <div className="flex flex-col w-full border border-gray-900 rounded-lg px-2 md:px-8 lg:px-8 py-10">
                 <form className="flex flex-col space-y-8">
                   <h2 className="text-3xl">Financial Projections</h2>
 

@@ -42,7 +42,7 @@ const Steeper = () => {
 
             <div className="container p-5" style={{ minHeight: "55vh" }}>
                 <h4 className="font-bold px-16 text-[#771E99]">{steps[index].label}</h4>
-                <h1 className=' ms-16 mt-10 text-3xl' >Select Business Plan Objective</h1>
+                <h1 className=' sm:ms-16 text-center sm:text-start mt-10 mb-10 sm:mb-0 text-3xl' >Select Business Plan Objective</h1>
                 {index === 0 && (
                     <>
                         {/* Starting the form */}

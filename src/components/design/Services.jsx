@@ -3,7 +3,7 @@ import ChatBubbleWing from "../../assets/svg/ChatBubbleWing";
 
 export const Gradient = () => {
   return (
-    <div className="absolute md:block hidden top-0 -left-[10rem] md:-left-[5rem] lg:-left-[3rem] w-[36rem] md:w-[46rem] lg:w-[56.625rem] h-[36rem] md:h-[46rem] lg:h-[56.625rem] opacity-50 mix-blend-color-dodge pointer-events-none">
+    <div className="absolute  md:inline hidden top-0 -left-[10rem] md:-left-[5rem] lg:-left-[3rem] w-[36rem] md:w-[46rem] lg:w-[56.625rem] h-[36rem] md:h-[46rem] lg:h-[56.625rem] opacity-50 mix-blend-color-dodge pointer-events-none">
       <img
         className="absolute top-1/2 left-1/2 w-[50rem] md:w-[60rem] lg:w-[79.5625rem] max-w-[79.5625rem] h-[50rem] md:h-[60rem] lg:h-[88.5625rem] -translate-x-1/2 -translate-y-1/2"
         src={gradient}

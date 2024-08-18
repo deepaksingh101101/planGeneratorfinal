@@ -12,7 +12,7 @@ export default function FormPage() {
                 <div className="w-full lg:w-1/3 relative flex flex-col items-center justify-center bg-gradient-to-r text-white p-8 lg:p-12">
                     <img src={service3} alt=""  className="h-[300px] mb-5 object-cover" />
                     <motion.h2
-                        className="text-6xl mt-28 lg:mt-0 font-bold"
+                        className="text-4xl sm:text-6xl mt-28 lg:mt-0 font-bold"
                         initial={{ opacity: 0, y: -50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
@@ -37,7 +37,7 @@ export default function FormPage() {
                     </motion.div>
                 </div>
             </div>
-            <div className="mt-12 px-20">
+            <div className="mt-12 px-5 sm:px-20">
                 <motion.div
                     className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-8 rounded-lg shadow-lg transform transition duration-500"
                     initial={{ opacity: 0 }}

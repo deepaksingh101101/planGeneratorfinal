@@ -24,7 +24,7 @@ const Services = () => {
           <div className="relative z-1 flex items-center h-[39rem] mb-5 p-8 border border-n-1/10 rounded-3xl overflow-hidden lg:p-20 xl:h-[46rem]">
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none md:w-3/5 xl:w-auto">
               <img
-                className="w-full h-full object-cover md:object-right"
+                className="w-full h-full object-cover md:object-right hidden md:inline "
                 width={800}
                 alt="Smartest AI"
                 height={730}
@@ -32,8 +32,8 @@ const Services = () => {
               />
             </div>
 
-            <div className="relative z-1 max-w-[17rem] ml-auto">
-              <h4 className="h4 mb-4">Smartest AI</h4>
+            <div className="relative z-1 md:max-w-[17rem] ml-auto">
+              <h4 className="h4 mb-4">Tasweegv’s AI-powered tools provide:</h4>
               <p className="body-2 mb-[3rem] text-n-3">
               Tasweegv unlocks the potential of AI-powered applications
               </p>
@@ -50,7 +50,7 @@ const Services = () => {
               </ul>
             </div>
 
-            <Generating className="absolute left-4 right-4 bottom-4 border-n-1/10 border lg:left-1/2 lg-right-auto lg:bottom-8 lg:-translate-x-1/2" />
+            <Generating className="flex items-center h-auto sm:h-[3.5rem] px-6 bg-gradient-to-r from-purple-800 to-purple-900 rounded-full shadow-lg absolute left-4 right-4 bottom-4 border-n-1/10 border lg:left-1/2 lg-right-auto lg:bottom-8 lg:-translate-x-1/2 text-white text-lg animate-bounce" />
           </div>
 
          
