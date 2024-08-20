@@ -68,33 +68,55 @@ i18n
           "business_plan_description": "Our AI business plan generator guides you through a few questions. Once done, a business plan example will be generated.",
           "explore_now": "Explore Now",
           "signUp": "Sign Up",
-          "name":"Name",
-          "email":"Email",
-          "password":"Password",
-          "sendOtp":"Send Otp",
-          "otp":"Otp",
-          "verify":"Verify",
-          "already":"Already have an account?",
-          "signin":"Sign In",
-          "aggre":"I agree to abide by the site's",
-          "terms":"Terms of Service",
-          "and":"and",
-          "privacy":"Privacy Policy",
-          "business":"Business Plan Generator",
-          "simplify":" Simplify your business planning process with our intuitive generator. Whether you're a startup or an established business, create comprehensive plans with ease.",
-          "join":" Join us today and bring your business ideas to life!",
+          "name": "Name",
+          "email": "Email",
+          "password": "Password",
+          "sendOtp": "Send Otp",
+          "otp": "Otp",
+          "verify": "Verify",
+          "already": "Already have an account?",
+          "signin": "Sign In",
+          "aggre": "I agree to abide by the site's",
+          "terms": "Terms of Service",
+          "and": "and",
+          "privacy": "Privacy Policy",
+          "business": "Business Plan Generator",
+          "simplify": " Simplify your business planning process with our intuitive generator. Whether you're a startup or an established business, create comprehensive plans with ease.",
+          "join": " Join us today and bring your business ideas to life!",
 
 
-          "allFields":"All Fields are required",
-          "failedtosend":"Failed to Send Otp. Please try again.",
-          "otpSend":"Otp Sended to your mail.",
-          "incorrectOtp":"Incorrect Otp",
+          "allFields": "All Fields are required",
+          "failedtosend": "Failed to Send Otp. Please try again.",
+          "otpSend": "Otp Sended to your mail.",
+          "incorrectOtp": "Incorrect Otp",
 
 
-          "failedSignin":"Failed to sign in. Please check your credentials and try again.",
-          "wrongEmailorpassowrd":"Wrong Email or Password",
-          "dont":" Don’t have an account?",
-          "createOne":"Create One",
+          "failedSignin": "Failed to sign in. Please check your credentials and try again.",
+          "wrongEmailorpassowrd": "Wrong Email or Password",
+          "dont": " Don’t have an account?",
+          "createOne": "Create One",
+
+
+          // ---Homepage -> services ----
+
+          "Tasweeqy_AI_title": "Tasweeqy AI made for Businessman",
+          "Tasweeqy_AI_subtitle":"Tasweeqy unlocks the potential of AI-powered applications",
+          "Tasweeqy_AI_tool":"Tasweeqy’s AI-powered tools provide:",
+          "Tasweeqy_AI_tool_text":"Tasweegv unlocks the potential of AI-powered applications",
+          "Service1":"Unmatched Intelligence",
+          "Service2":"Comprehensive Insights",
+          "Service3":"Time Efficiency",
+
+          // ---Homepage -> Footer ----
+
+          "Footer_heading":"Our AI-generated business plan won't disappoint",
+          "Footer_subheading":"create a business plan in just 15 minutes with our AI business plan generator",
+          "button1":"Make Business Plan",
+          "button2":"Login if you've already made a plan",
+          "copyright":"Tasweegv.ai, 2024",
+          "privacy_policy":"Privacy Policy",
+          "refund":"Refund Policy",
+
 
 
 
@@ -159,29 +181,55 @@ i18n
           "business_plan_description": "يرشدك مولد خطة العمل بالذكاء الاصطناعي من خلال بعض الأسئلة. بمجرد الانتهاء، سيتم إنشاء مثال لخطة العمل.",
           "explore_now": "استكشف الآن",
           "signUp": "اشترك",
-          "name":"اسم",
-          "email":"البريد الإلكتروني",
-  "password":"كلمة المرور",
-  "sendOtp":"إرسال رمز التحقق",
-  "otp":"رمز التحقق",
-  "verify":"تحقق",
-  "already":"لديك حساب بالفعل؟",
-  "signin":"تسجيل الدخول",
-  "aggre":"أوافق على الالتزام بـ",
-  "terms":"شروط الخدمة",
-  "and":"و",
-  "privacy":"سياسة الخصوصية",
-  "business":"مولد خطة العمل",
-  "simplify":"بسط عملية تخطيط عملك مع مولدنا السهل. سواء كنت شركة ناشئة أو مؤسسة قائمة، قم بإنشاء خطط شاملة بسهولة.",
-  "join":"انضم إلينا اليوم وحول أفكار عملك إلى واقع!",
-  "allFields":"جميع الحقول مطلوبة",
-  "failedtosend":"فشل في إرسال رمز التحقق. يرجى المحاولة مرة أخرى.",
-  "otpSend":"تم إرسال رمز التحقق إلى بريدك الإلكتروني.",
-  "incorrectOtp":"رمز التحقق غير صحيح",
-  "failedSignin":"فشل في تسجيل الدخول. يرجى التحقق من بياناتك والمحاولة مرة أخرى.",
-  "wrongEmailorpassowrd":"البريد الإلكتروني أو كلمة المرور غير صحيحة",
-  "dont":"ليس لديك حساب؟",
-  "createOne":"أنشئ حسابًا",
+          "name": "اسم",
+          "email": "البريد الإلكتروني",
+          "password": "كلمة المرور",
+          "sendOtp": "إرسال رمز التحقق",
+          "otp": "رمز التحقق",
+          "verify": "تحقق",
+          "already": "لديك حساب بالفعل؟",
+          "signin": "تسجيل الدخول",
+          "aggre": "أوافق على الالتزام بـ",
+          "terms": "شروط الخدمة",
+          "and": "و",
+          "privacy": "سياسة الخصوصية",
+          "business": "مولد خطة العمل",
+          "simplify": "بسط عملية تخطيط عملك مع مولدنا السهل. سواء كنت شركة ناشئة أو مؤسسة قائمة، قم بإنشاء خطط شاملة بسهولة.",
+          "join": "انضم إلينا اليوم وحول أفكار عملك إلى واقع!",
+          "allFields": "جميع الحقول مطلوبة",
+          "failedtosend": "فشل في إرسال رمز التحقق. يرجى المحاولة مرة أخرى.",
+          "otpSend": "تم إرسال رمز التحقق إلى بريدك الإلكتروني.",
+          "incorrectOtp": "رمز التحقق غير صحيح",
+          "failedSignin": "فشل في تسجيل الدخول. يرجى التحقق من بياناتك والمحاولة مرة أخرى.",
+          "wrongEmailorpassowrd": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+          "dont": "ليس لديك حساب؟",
+          "createOne": "أنشئ حسابًا",
+
+          // ---Homepage -> services ----
+          
+          "Tasweeqy_AI_title": "تسويقي AI مصمم لرجال الأعمال",
+          "Tasweeqy_AI_subtitle": "تسويقي يفتح إمكانيات التطبيقات المدعومة بالذكاء الاصطناعي",
+          "Tasweeqy_AI_tool": "الأدوات المدعومة بالذكاء الاصطناعي في تسويقي توفر:",
+          "Tasweeqy_AI_tool_text": "تسويقي يفتح إمكانيات التطبيقات المدعومة بالذكاء الاصطناعي",
+          "Service1": "ذكاء لا مثيل له",
+          "Service2": "رؤى شاملة",
+          "Service3": "كفاءة الوقت",
+
+          // ---Homepage -> Footer ----
+          
+          "Footer_heading": "خطة العمل المدعومة بالذكاء الاصطناعي لن تخيب ظنك",
+          "Footer_subheading": "قم بإنشاء خطة عمل في 15 دقيقة فقط باستخدام مولد خطة العمل بالذكاء الاصطناعي",
+          "button1": "قم بإنشاء خطة عمل",
+          "button2": "تسجيل الدخول إذا كنت قد أنشأت خطة بالفعل",
+          "copyright": "تسويقي.ai، 2024",
+          "privacy_policy": "سياسة الخصوصية",
+          "refund": "سياسة الاسترجاع"
+          
+          
+          
+          
+          
+
 
         }
       },
