@@ -116,6 +116,19 @@ i18n
 
 // Form 1
 
+"request_fund_investors": "To be used to request fund from investors",
+"request_fund_banks": "To be used to request fund from banks",
+"self_learning": "For self-learning",
+"school_project": "To be used as reference for school/university project",
+"workplace_project": "To be used as reference for workplace projects",
+"non_financial_approval": "To be used to submit to a non-financial institution for approval (e.g. getting VISA approval, franchise approval, tenant approval)",
+"other_reasons": "Other reasons",
+"existing_business": "Existing business",
+"upcoming_unlaunched_business": "Upcoming unlaunched business",
+"isThis": "Is this an existing or an upcoming business?",
+"whatWill": "What will you use this business plan for?",
+
+// Form 2
 
 
 
@@ -218,7 +231,20 @@ i18n
   "step6Title": "أدخل العملة وتفاصيل الاستثمار الأولي",
   "step7Title": "أدخل التفاصيل المالية ولغة الخطة",
 
+// form 1
+"request_fund_investors": "للاستخدام لطلب التمويل من المستثمرين",
+"request_fund_banks": "للاستخدام لطلب التمويل من البنوك",
+"self_learning": "للتعلم الذاتي",
+"school_project": "للاستخدام كمرجع لمشروع مدرسي/جامعي",
+"workplace_project": "للاستخدام كمرجع لمشاريع في مكان العمل",
+"non_financial_approval": "للاستخدام لتقديمه إلى مؤسسة غير مالية للحصول على الموافقة (مثل الحصول على موافقة تأشيرة، موافقة امتياز، موافقة مستأجر)",
+"other_reasons": "أسباب أخرى",
+"existing_business": "عمل قائم",
+"upcoming_unlaunched_business": "عمل قادم غير مطلق",
+"isThis": "هل هذا عمل قائم أم عمل قادم؟",
+"whatWill": "لماذا ستستخدم خطة العمل هذه؟",
 
+// form 2
 
         }
       },
