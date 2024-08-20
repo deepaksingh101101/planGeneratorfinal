@@ -2,9 +2,8 @@ import { Link } from "react-router-dom";
 import { logo,small_logo } from "../assets";
 
 const Header = () => {
+  
   let authUserData = JSON.parse(localStorage.getItem('user'))?.user;
-
-
   const handleLogout=()=>{
     localStorage.clear();
   }
