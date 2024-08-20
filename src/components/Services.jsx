@@ -10,14 +10,23 @@ import {
 } from "./design/Services";
 
 import Generating from "./Generating";
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+  const {t} = useTranslation();
+  
+  const Services_tools = [
+    t('Service1'),
+    t('Service2'),
+    t('Service3'),
+    
+  ];
   return (
     <Section id="how-to-use">
       <div className="container">
         <Heading
-          title="Tasweegv AI made for Businessman."
-          text="Tasweegv unlocks the potential of AI-powered applications"
+          title={t('Tasweeqy_AI_title')}
+          text={t('Tasweeqy_AI_subtitle')}
         />
 
         <div className="relative">
@@ -33,12 +42,12 @@ const Services = () => {
             </div>
 
             <div className="relative z-1 md:max-w-[17rem] ml-auto">
-              <h4 className="h4 mb-4">Tasweegv’s AI-powered tools provide:</h4>
+              <h4 className="h4 mb-4">{t('Tasweeqy_AI_tool')} </h4>
               <p className="body-2 mb-[3rem] text-n-3">
-              Tasweegv unlocks the potential of AI-powered applications
+              {t('Tasweeqy_AI_tool_text')} 
               </p>
               <ul className="body-2">
-                {brainwaveServices.map((item, index) => (
+                {Services_tools.map((item, index) => (
                   <li
                     key={index}
                     className="flex items-start py-4 border-t border-n-6"
