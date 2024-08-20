@@ -91,6 +91,14 @@ i18n
           "incorrectOtp":"Incorrect Otp",
 
 
+          "failedSignin":"Failed to sign in. Please check your credentials and try again.",
+          "wrongEmailorpassowrd":"Wrong Email or Password",
+          "dont":" Don’t have an account?",
+          "createOne":"Create One",
+
+
+
+
 
         }
       },
@@ -169,7 +177,11 @@ i18n
   "allFields":"جميع الحقول مطلوبة",
   "failedtosend":"فشل في إرسال رمز التحقق. يرجى المحاولة مرة أخرى.",
   "otpSend":"تم إرسال رمز التحقق إلى بريدك الإلكتروني.",
-  "incorrectOtp":"رمز التحقق غير صحيح"
+  "incorrectOtp":"رمز التحقق غير صحيح",
+  "failedSignin":"فشل في تسجيل الدخول. يرجى التحقق من بياناتك والمحاولة مرة أخرى.",
+  "wrongEmailorpassowrd":"البريد الإلكتروني أو كلمة المرور غير صحيحة",
+  "dont":"ليس لديك حساب؟",
+  "createOne":"أنشئ حسابًا",
 
         }
       },

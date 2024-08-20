@@ -3,6 +3,8 @@ import GPT from "../../components/gpt/GPT";
 import { logo } from "../../assets";
 import { Link, useNavigate } from "react-router-dom";
 import { hitApi } from '../../api/requestHelpers';
+import { useTranslation } from 'react-i18next';
+import SmallLoader from '../../components/loader/SmallLoader';
 
 
 export default function Sign() {
@@ -11,14 +13,14 @@ export default function Sign() {
   const [error, setError] = useState('');
 
   const navigate=useNavigate();
+  const { t, i18n } = useTranslation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(''); // Clear previous errors
-
+setLoading(true)
     try {
       const response = await hitApi('POST', '/api/user/login', { email, password });
-      console.log(response)
       if (response.data.status === true) {
         // Handle successful sign-in
         localStorage.setItem("user",JSON.stringify(response?.data))
@@ -26,13 +28,19 @@ export default function Sign() {
         // Redirect to dashboard or another page
       } else {
         // Handle error response
-        setError('Failed to sign in. Please check your credentials and try again.');
+        setLoading(false)
+        setError(t('failedSignin'));
       }
     } catch (err) {
-      setError('Wrong Email or Password');
+      setError(t('wrongEmailorpassowrd'));
       console.error(err);
+      setLoading(false)
+
     }
   };
+
+  const [loading, setLoading] = useState(false);
+
 
   return (
     <div className="min-h-screen bg-[#0E0C15] text-gray-100 flex justify-center mt-20">
@@ -43,14 +51,14 @@ export default function Sign() {
           </div> */}
           <div className="mt-12 flex flex-col items-center">
             <h1 className="text-4xl xl:text-5xl font-extrabold text-white">
-              Sign In
+              {t('signin')}
             </h1>
             <form onSubmit={handleSubmit} className="w-full flex-1 mt-8">
               <div className="mx-auto max-w-xs">
                 <input
                   className="w-full px-8 py-4 rounded-lg font-medium bg-[#3A3A48] border border-gray-600 placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-[#23222C] mt-5 text-white"
                   type="email"
-                  placeholder="Email"
+                  placeholder={t('email')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -58,7 +66,7 @@ export default function Sign() {
                 <input
                   className="w-full px-8 py-4 rounded-lg font-medium bg-[#3A3A48] border border-gray-600 placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-[#23222C] mt-5 text-white"
                   type="password"
-                  placeholder="Password"
+                  placeholder={t('password')}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -82,31 +90,32 @@ export default function Sign() {
                     <circle cx="8.5" cy="7" r="4" />
                     <path d="M20 8v6M23 11h-6" />
                   </svg>
-                  <span className="ml-3">Sign In</span>
+                  <span className="mx-3">{t('signin')}</span>
+                  {loading && <SmallLoader/>}
                 </button>
                 <p className="mt-6 text-xs text-gray-400 text-center">
-                  Don’t have an account?{" "}
+                  {t('dont')}{" "}
                   <Link
                     to="/register"
                     className="text-[#C2410C]  border-b border-gray-500 border-dotted"
                   >
-                    Create One
+                    {t('createOne')}
                   </Link>
                 </p>
                 <p className="mt-6 text-xs text-gray-400 text-center">
-                  I agree to abide by the site's{" "}
+                 {t('aggre')}{" "}
                   <a
                     href="#"
                     className="border-b border-gray-500 border-dotted"
                   >
-                    Terms of Service
+                    {t('terms')}
                   </a>{" "}
-                  and{" "}
+                  {t('and')}{" "}
                   <a
                     href="#"
                     className="border-b border-gray-500 border-dotted"
                   >
-                    Privacy Policy
+                    {t('privacy')}
                   </a>
                 </p>
               </div>
@@ -117,16 +126,15 @@ export default function Sign() {
           <div className="mx-16 w-full text-white">
             <GPT />
             <h2 className="text-4xl font-bold mb-4 mt-20 animate-bounce">
-              Business Plan Generator
+              {t("business")}
+              
             </h2>
             <p className="text-lg leading-relaxed animate-pulse text-left">
-              Simplify your business planning process with our intuitive
-              generator. Whether you're a startup or an established business,
-              create comprehensive plans with ease.
+            {t("simplify")}
+
             </p>
             <p className="mt-6 text-md text-gray-300 animate-fade-in text-right">
-              Join us today and bring your business ideas to life!
-            </p>
+            {t("join")}            </p>
           </div>
         </div>
       </div>
