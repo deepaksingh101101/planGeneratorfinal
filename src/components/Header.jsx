@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 import { logo,small_logo } from "../assets";
 
 const Header = () => {
+  
+  let authUserData = JSON.parse(localStorage.getItem('user'))?.user;
+  const handleLogout=()=>{
+    localStorage.clear();
+  }
   return (
     <nav
       className={`fixed top-0 left-0 py-[10px] md:py-[25px] w-full z-50 border-b border-n-6 lg:bg-n-8/90 lg:backdrop-blur-sm bg-n-8/90 backdrop-blur-sm`}
@@ -26,11 +31,16 @@ const Header = () => {
           />
         </a>
 
-<Link to='/sign' >
+{!authUserData && <Link to='/sign' >
         <button href="/register" className=" px-[70px] continueBtnShadow transitionC hover:scale-105 bg-orange-700 text-white  py-2 text-[17px] font-bold rounded-md  ">
                Login
             </button>
-            </Link>
+            </Link>}
+{authUserData && <Link to='/sign' >
+        <button href="/register" onClick={handleLogout} className=" px-[70px] continueBtnShadow transitionC hover:scale-105 bg-orange-700 text-white  py-2 text-[17px] font-bold rounded-md  ">
+               Logout
+            </button>
+            </Link>}
       </div>
     </nav>
   );

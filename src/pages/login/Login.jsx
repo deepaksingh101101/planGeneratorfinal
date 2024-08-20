@@ -4,6 +4,7 @@ import { logo } from "../../assets";
 import { Link, useNavigate } from "react-router-dom";
 import { hitApi } from '../../api/requestHelpers';
 import SmallLoader from '../../components/loader/SmallLoader'
+import { useTranslation } from 'react-i18next';
 export default function Login() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -18,7 +19,7 @@ export default function Login() {
     setError(''); // Clear previous errors
     setSuccess(''); // Clear previous success messages
     if(!email || !password || !name){
-      setError("All Fields are required");
+      setError(t('allFields'));
       return
     }
 
@@ -27,12 +28,12 @@ export default function Login() {
       const response = await hitApi('POST', '/api/user/sendOtp', { email });
       console.log(response)
       if (response.response.data.status !== true) {
-        setError(response?.response?.data?.message || 'Failed to Send Otp. Please try again.');
+        setError(response?.response?.data?.message || t('failedtosend'));
         return
       }  
       else if(response?.data?.status===true){
       // Handle successful signup
-      setSuccess(response?.data?.message || 'Otp Sended to your mail');
+      setSuccess(response?.data?.message || t('otpSend'));
       setIsOtpSended(true)
       }
     
@@ -65,7 +66,7 @@ export default function Login() {
         navigate('/sign')
       } else {
         // Handle error response
-        setError(response.response.data.message ||'Incorrect Otp');
+        setError(response.response.data.message ||t('incorrectOtp'));
         setLoading(false)
 
       }
@@ -102,6 +103,8 @@ setOtp(newOtp)
 
   }
 }
+const { t, i18n } = useTranslation();
+
 
   return (
     <div className="min-h-screen bg-[#0E0C15] text-gray-100 flex justify-center mt-20">
@@ -112,14 +115,14 @@ setOtp(newOtp)
           </div> */}
           <div className="mt-12 flex flex-col items-center">
             <h1 className="text-4xl xl:text-5xl font-extrabold text-white">
-              Sign Up
+            {t('signUp')}
             </h1>
             <form onSubmit={handleSubmit} className="w-full flex-1 mt-8">
               <div className="mx-auto max-w-xs">
                 <input
                   className="w-full px-8 py-4 rounded-lg font-medium bg-[#3A3A48] border border-gray-600 placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-[#23222C] text-white"
                   type="text"
-                  placeholder="Name"
+                  placeholder={t('name')}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
@@ -127,7 +130,7 @@ setOtp(newOtp)
                 <input
                   className="w-full px-8 py-4 rounded-lg font-medium bg-[#3A3A48] border border-gray-600 placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-[#23222C] mt-5 text-white"
                   type="email"
-                  placeholder="Email"
+                  placeholder={t('email')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -135,13 +138,13 @@ setOtp(newOtp)
                 <input
                   className="w-full px-8 py-4 rounded-lg font-medium bg-[#3A3A48] border border-gray-600 placeholder-gray-400 text-sm focus:outline-none focus:border-gray-400 focus:bg-[#23222C] mt-5 text-white"
                   type="password"
-                  placeholder="Password"
+                  placeholder={t('password')}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
                 <div className="flex justify-end">
-                <span className='justify-end mt-2 text-[15px] underline text-blue-600 ' onClick={handleSendOtp} >Send Otp</span>
+                <span className='justify-end mt-2 text-[15px] underline text-blue-600 ' onClick={handleSendOtp} >{t('sendOtp')}</span>
                 </div>
                 {error && (
                   <p className="mt-4 text-red-500 text-sm text-center">{error}</p>
@@ -151,7 +154,7 @@ setOtp(newOtp)
                 )}
                  {isOtpSendCicked && <div className="mb-3 mt-3">
                 <label htmlFor="otp" className="form-label">
-                  OTP
+                {t('otp')}
                 </label>
                 <div className="flex justify-center my-2">
                {otp?.map((digit,index)=>(
@@ -191,32 +194,32 @@ setOtp(newOtp)
                     <circle cx="8.5" cy="7" r="4" />
                     <path d="M20 8v6M23 11h-6" />
                   </svg>
-                  <span className="mx-3">Verify</span>
+                  <span className="mx-3">{t('verify')}</span>
                   {loading && <SmallLoader/>}
                 </button>}
                 <p className="mt-6 text-xs text-gray-400 text-center">
-                  Already have an account?{" "}
+                {t('already')}{" "}
                   <Link
                     to="/sign"
                     className="text-[#C2410C] border-b border-gray-500 border-dotted"
                   >
-                    Sign In
+                    {t('signin')}
                   </Link>
                 </p>
                 <p className="mt-6 text-xs text-gray-400 text-center">
-                  I agree to abide by the site's{" "}
+                {t('aggre')}{" "}
                   <a
                     href="#"
                     className="border-b border-gray-500 border-dotted"
                   >
-                    Terms of Service
+                   {t('terms')}
                   </a>{" "}
-                  and{" "}
+                  {t('and')}{" "}
                   <a
                     href="#"
                     className="border-b border-gray-500 border-dotted"
                   >
-                    Privacy Policy
+                   {t('privacy')}
                   </a>
                 </p>
               </div>
@@ -227,16 +230,13 @@ setOtp(newOtp)
           <div className="mx-16 w-full text-white">
             <GPT />
             <h2 className="text-4xl font-bold mb-4 mt-20 animate-bounce">
-              Business Plan Generator
+            {t('business')}
             </h2>
             <p className="text-lg leading-relaxed animate-pulse text-left">
-              Simplify your business planning process with our intuitive
-              generator. Whether you're a startup or an established business,
-              create comprehensive plans with ease.
+            {t('simplify')}
             </p>
             <p className="mt-6 text-md text-gray-300 animate-fade-in text-right">
-              Join us today and bring your business ideas to life!
-            </p>
+            {t('join')}            </p>
           </div>
         </div>
       </div>
