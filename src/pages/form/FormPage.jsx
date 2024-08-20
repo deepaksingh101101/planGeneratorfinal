@@ -1,8 +1,12 @@
 import Steeper from "../../components/Steeper";
 import { service3 } from "../../assets";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function FormPage() {
+
+    const {t}=useTranslation()
+
     return (
         <>
             <div className="flex flex-col lg:flex-row pt-[7.75rem] lg:pt-[5.25rem]">
@@ -17,7 +21,7 @@ export default function FormPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        AI Business Plan Generator
+                       {t('ai_business')}
                     </motion.h2>
                     <motion.div
                         className="mt-8 text-lg  "
@@ -26,13 +30,13 @@ export default function FormPage() {
                         transition={{ duration: 0.6, delay: 0.4 }}
                     >
                         <p className="mb-4">
-                            Transform your ideas into a comprehensive business plan in minutes with our AI-powered solution.
+                            {t('transform')}
                         </p>
                         <p className="mb-4">
-                            Our tool guides you step-by-step, providing personalized suggestions to help you create a robust business plan.
+                           {t("ourGoal")}
                         </p>
                         <p>
-                            Get insights on market trends, customer segments, financial projections, and much more.
+                           {t('get')}
                         </p>
                     </motion.div>
                 </div>
@@ -46,9 +50,7 @@ export default function FormPage() {
                 >
                     <h2 className="text-2xl font-bold text-white mb-4">We value your privacy</h2>
                     <p className="text-white">
-                        At 15minuteplan.ai, we are committed to protecting your privacy and the security of your personal information. 
-                        We collect only the necessary data to generate your business plan and improve our service, and we will never steal 
-                        your business idea or share your information with third parties without your consent. 
+                       {t('at')}
                         <a href="#" className="underline text-white font-semibold">Learn more about our privacy policy</a>.
                     </p>
                 </motion.div>

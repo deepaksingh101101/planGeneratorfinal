@@ -98,6 +98,25 @@ i18n
 
 
 
+          "ai_business":"Ai Business Plan Generator",
+          "transform":"Transform your ideas into a comprehensive business plan in minutes with our AI-powered solution.",
+          "ourGoal":" Our tool guides you step-by-step, providing personalized suggestions to help you create a robust business plan.",
+          "get":" Get insights on market trends, customer segments, financial projections, and much more.",
+          "at":"  At 15minuteplan.ai, we are committed to protecting your privacy and the security of your personal information. We collect only the necessary data to generate your business plan and improve our service, and we will never steal  your business idea or share your information with third parties without your consent. ",
+          "step5":"Step 5",
+          "step6":"Step 6",
+          "step7":"Step 7",
+          "step1Title":"Select Business Plan Objective",
+          "step2Title":"Enter Basic Business Information",
+          "step3Title":"Enter Customer Group Details",
+          "step4Title":"Enter Product or Service Details",
+          "step5Title":"Enter Success Drivers",
+          "step6Title":"Enter Currency and Initial Investment Details",
+          "step7Title":"Enter Financial Details and Plan Language",
+
+// Form 1
+
+
 
 
         }
@@ -182,6 +201,24 @@ i18n
   "wrongEmailorpassowrd":"البريد الإلكتروني أو كلمة المرور غير صحيحة",
   "dont":"ليس لديك حساب؟",
   "createOne":"أنشئ حسابًا",
+
+  "ai_business": "مولد خطة عمل بالذكاء الاصطناعي",
+  "transform": "حول أفكارك إلى خطة عمل شاملة في دقائق باستخدام حلنا المدعوم بالذكاء الاصطناعي.",
+  "ourGoal": "يقدم لك أداتنا اقتراحات مخصصة لمساعدتك في إنشاء خطة عمل قوية.",
+  "get": "احصل على رؤى حول اتجاهات السوق، مجموعات العملاء، التوقعات المالية، والمزيد.",
+  "at": "في 15minuteplan.ai، نحن ملتزمون بحماية خصوصيتك وأمن معلوماتك الشخصية. نقوم بجمع البيانات الضرورية فقط لإنشاء خطة عملك وتحسين خدماتنا، ولن نقوم بسرقة فكرتك التجارية أو مشاركة معلوماتك مع أطراف ثالثة دون موافقتك.",
+  "step5": "الخطوة 5",
+  "step6": "الخطوة 6",
+  "step7": "الخطوة 7",
+  "step1Title": "اختر هدف خطة العمل",
+  "step2Title": "أدخل معلومات العمل الأساسية",
+  "step3Title": "أدخل تفاصيل مجموعة العملاء",
+  "step4Title": "أدخل تفاصيل المنتج أو الخدمة",
+  "step5Title": "أدخل عوامل النجاح",
+  "step6Title": "أدخل العملة وتفاصيل الاستثمار الأولي",
+  "step7Title": "أدخل التفاصيل المالية ولغة الخطة",
+
+
 
         }
       },

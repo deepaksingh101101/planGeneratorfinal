@@ -9,18 +9,19 @@ import FifthForm from './forms/FifthForm';
 import SixthForm from './forms/SixthForm';
 import SeventhForm from './forms/SeventhForm';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const Steeper = () => {
     const { firstForm } = useSelector((state) => state.form);
-
+const {t}=useTranslation();
     const steps = [
-        { icon: "1", label: 'Step 1',title:"Select Business Plan Objective" },
-        { icon: "2", label: 'Step 2',title:"Enter Basic Business Information" },
-        { icon: "3", label: 'Step 3',title:"Enter Customer Group Details" },
-        { icon: "4", label: 'Step 4',title:"Enter Product or Service Details" },
-        { icon: "5", label: 'Step 5',title:"Enter Success Drivers" },
-        { icon: "6", label: 'Step 6',title:"Enter Currency and Initial Investment Details" },
-        { icon: "7", label: 'Step 7',title:"Enter Financial Details and Plan Language" }
+        { icon: "1", label:t('step1'),title:t('step1Title')},
+        { icon: "2", label: t('step2'),title:t('step2Title')},
+        { icon: "3", label: t('step3'),title:t('step3Title')},
+        { icon: "4", label: t('step4'),title:t('step4Title')},
+        { icon: "5", label: t('step5'),title:t('step5Title')},
+        { icon: "6", label: t('step6'),title:t('step6Title')},
+        { icon: "7", label: t('step7'),title:t('step7Title') }
     ];
 
     const [index, setIndex] = useState(0);
@@ -50,7 +51,7 @@ const Steeper = () => {
                 <h4 className="font-bold px-16 text-[#771E99]">{steps[index].label}</h4>
                 {index === 0 && (
                     <>
-                                    <h1 className=' ms-16 mt-10 text-3xl' >Select Business Plan Objective</h1>
+                                    <h1 className=' ms-16 mt-10 text-3xl' >{t('step1Title')}</h1>
 
                         {/* Starting the form */}
                       <FirstForm/>
@@ -59,7 +60,7 @@ const Steeper = () => {
 
                 {index === 1 && (
                     <>
-                                    <h1 className=' ms-16 mt-10 text-3xl' >Enter Basic Business Information</h1>
+                                    <h1 className=' ms-16 mt-10 text-3xl' >{t('step2Title')}</h1>
 
                         {/* Step 2 content */}
                      <SecondForm/>
@@ -68,7 +69,7 @@ const Steeper = () => {
 
                 {index === 2 && (
                     <>
-                                                        <h1 className=' ms-16 mt-10 text-3xl' >Enter Customer Group Details</h1>
+                                                        <h1 className=' ms-16 mt-10 text-3xl' >{t('step3Title')}</h1>
 
                         {/* Customer Group Details */}
                       <ThirdForm/>
@@ -77,7 +78,7 @@ const Steeper = () => {
 
                 {index === 3 && (
                     <>
-                                                        <h1 className=' ms-16 mt-10 text-3xl' >Enter Product or Service Details</h1>
+                                                        <h1 className=' ms-16 mt-10 text-3xl' >{t('step4Title')}</h1>
 
                         {/* Product or Service Details */}
                      <FourthForm/>
@@ -86,7 +87,7 @@ const Steeper = () => {
 
                 {index === 4 && (
                     <>
-                                                        <h1 className=' ms-16 mt-10 text-3xl' >Enter Success Drivers</h1>
+                                                        <h1 className=' ms-16 mt-10 text-3xl' >{t('step5Title')}</h1>
 
                         {/* Success Drivers and Weaknesses */}
                        <FifthForm/>
@@ -94,7 +95,7 @@ const Steeper = () => {
                 )}
                 {index === 5 && (
                     <>
-                                                        <h1 className=' ms-16 mt-10 text-3xl' >Enter Currency and Initial Investment Details</h1>
+                                                        <h1 className=' ms-16 mt-10 text-3xl' >{t('step6Title')}</h1>
 
 
                         {/* Success Drivers and Weaknesses */}
@@ -103,7 +104,7 @@ const Steeper = () => {
                 )}
                 {index === 6 && (
                     <>
-                                                        <h1 className=' ms-16 mt-10 text-3xl' >Enter Financial Details and Plan Language</h1>
+                                                        <h1 className=' ms-16 mt-10 text-3xl' >{t('step7Title')}</h1>
 
                         {/* Success Drivers and Weaknesses */}
                        <SeventhForm/>
