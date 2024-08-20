@@ -9,13 +9,18 @@ export default function FirstForm() {
 
   const handleBusinessTypeChange = (e) => {
     const selectedOption = business.find((option) => option.value === e.target.value);
-    dispatch(setFirstForm({ name: 'businessType', value: selectedOption.label }));
+    if (selectedOption) {
+      dispatch(setFirstForm({ name: 'businessType', value: selectedOption.label }));
+    }
   };
-
+  
   const handleBusinessPlanChange = (e) => {
-    const selectedOption = find((option) => option.value === e.target.value);
-    dispatch(setFirstForm({ name: 'businessPlan', value: selectedOption.label }));
+    const selectedOption = businessOperationalStatus.find((option) => option.value === e.target.value);
+    if (selectedOption) {
+      dispatch(setFirstForm({ name: 'businessPlan', value: selectedOption.label }));
+    }
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
