@@ -1,8 +1,9 @@
-// src/components/SecondForm.js
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next'; // Importing i18next
 import { setSecondForm } from '../../features/formSlice';
 
 export default function SecondForm() {
+  const { t } = useTranslation(); // Initializing translation
   const dispatch = useDispatch();
   const { secondForm } = useSelector((state) => state.form);
 
@@ -28,14 +29,14 @@ export default function SecondForm() {
   };
 
   const productServiceOptions = [
-    { value: 'product', label: 'Product' },
-    { value: 'service', label: 'Service (retail businesses are considered service)' },
+    { value: 'product', label: t('product') },
+    { value: 'service', label: t('service') },
   ];
 
   const salesChannelOptions = [
-    { value: 'online', label: 'Online' },
-    { value: 'physical', label: 'Physical Location' },
-    { value: 'both', label: 'Both online and physical location' },
+    { value: 'online', label: t('online') },
+    { value: 'physical', label: t('physical') },
+    { value: 'both', label: t('both') },
   ];
 
   return (
@@ -49,7 +50,7 @@ export default function SecondForm() {
                   <form onSubmit={handleSubmit} className="flex flex-col space-y-8 mt-10">
                     {/* Business Name */}
                     <div>
-                      <label className="font-bold text-lg text-white">Your business name (required)</label>
+                      <label className="font-bold text-lg text-white">{t('businessName')}</label>
                       <input
                         type="text"
                         name="businessName"
@@ -62,7 +63,7 @@ export default function SecondForm() {
 
                     {/* Business Description */}
                     <div>
-                      <label className="font-bold text-lg text-white">Your business description (required)</label>
+                      <label className="font-bold text-lg text-white">{t('businessDescription')}</label>
                       <textarea
                         name="businessDescription"
                         value={secondForm.businessDescription.answer}
@@ -74,7 +75,7 @@ export default function SecondForm() {
 
                     {/* Number of Employees */}
                     <div>
-                      <label className="font-bold text-lg text-white">Number of employees (required)</label>
+                      <label className="font-bold text-lg text-white">{t('numberOfEmployees')}</label>
                       <input
                         type="number"
                         name="numberOfEmployees"
@@ -87,7 +88,7 @@ export default function SecondForm() {
 
                     {/* Product or Service */}
                     <div>
-                      <label className="font-bold text-lg text-white">Do you offer a product or service? (required)</label>
+                      <label className="font-bold text-lg text-white">{t('productService')}</label>
                       <div className="mt-4 space-y-4">
                         {productServiceOptions.map((option) => (
                           <label
@@ -111,7 +112,7 @@ export default function SecondForm() {
 
                     {/* Sales Channel */}
                     <div>
-                      <label className="font-bold text-lg text-white">How can customer get your product or service? (required)</label>
+                      <label className="font-bold text-lg text-white">{t('salesChannel')}</label>
                       <div className="mt-4 space-y-4">
                         {salesChannelOptions.map((option) => (
                           <label
@@ -135,7 +136,7 @@ export default function SecondForm() {
 
                     {/* Customer Location */}
                     <div>
-                      <label className="font-bold text-lg text-white">Where do you serve your customers? (required)</label>
+                      <label className="font-bold text-lg text-white">{t('customerLocation')}</label>
                       <input
                         type="text"
                         name="customerLocation"

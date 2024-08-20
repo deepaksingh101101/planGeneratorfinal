@@ -129,7 +129,17 @@ i18n
 "whatWill": "What will you use this business plan for?",
 
 // Form 2
-
+"businessName": "Your business name (required)",
+  "businessDescription": "Your business description (required)",
+  "numberOfEmployees": "Number of employees (required)",
+  "productService": "Do you offer a product or service? (required)",
+  "product": "Product",
+  "service": "Service (retail businesses are considered service)",
+  "salesChannel": "How can customers get your product or service? (required)",
+  "online": "Online",
+  "physical": "Physical Location",
+  "both": "Both online and physical location",
+  "customerLocation": "Where do you serve your customers? (required)"
 
 
         }
