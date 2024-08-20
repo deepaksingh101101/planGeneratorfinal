@@ -66,7 +66,32 @@ i18n
           "working_process": "Working Process",
           "how_it_works": "How it works?",
           "business_plan_description": "Our AI business plan generator guides you through a few questions. Once done, a business plan example will be generated.",
-          "explore_now": "Explore Now"
+          "explore_now": "Explore Now",
+          "signUp": "Sign Up",
+          "name":"Name",
+          "email":"Email",
+          "password":"Password",
+          "sendOtp":"Send Otp",
+          "otp":"Otp",
+          "verify":"Verify",
+          "already":"Already have an account?",
+          "signin":"Sign In",
+          "aggre":"I agree to abide by the site's",
+          "terms":"Terms of Service",
+          "and":"and",
+          "privacy":"Privacy Policy",
+          "business":"Business Plan Generator",
+          "simplify":" Simplify your business planning process with our intuitive generator. Whether you're a startup or an established business, create comprehensive plans with ease.",
+          "join":" Join us today and bring your business ideas to life!",
+
+
+          "allFields":"All Fields are required",
+          "failedtosend":"Failed to Send Otp. Please try again.",
+          "otpSend":"Otp Sended to your mail.",
+          "incorrectOtp":"Incorrect Otp",
+
+
+
         }
       },
       ar: {
@@ -124,7 +149,28 @@ i18n
           "working_process": "عملية العمل",
           "how_it_works": "كيف يعمل؟",
           "business_plan_description": "يرشدك مولد خطة العمل بالذكاء الاصطناعي من خلال بعض الأسئلة. بمجرد الانتهاء، سيتم إنشاء مثال لخطة العمل.",
-          "explore_now": "استكشف الآن"
+          "explore_now": "استكشف الآن",
+          "signUp": "اشترك",
+          "name":"اسم",
+          "email":"البريد الإلكتروني",
+  "password":"كلمة المرور",
+  "sendOtp":"إرسال رمز التحقق",
+  "otp":"رمز التحقق",
+  "verify":"تحقق",
+  "already":"لديك حساب بالفعل؟",
+  "signin":"تسجيل الدخول",
+  "aggre":"أوافق على الالتزام بـ",
+  "terms":"شروط الخدمة",
+  "and":"و",
+  "privacy":"سياسة الخصوصية",
+  "business":"مولد خطة العمل",
+  "simplify":"بسط عملية تخطيط عملك مع مولدنا السهل. سواء كنت شركة ناشئة أو مؤسسة قائمة، قم بإنشاء خطط شاملة بسهولة.",
+  "join":"انضم إلينا اليوم وحول أفكار عملك إلى واقع!",
+  "allFields":"جميع الحقول مطلوبة",
+  "failedtosend":"فشل في إرسال رمز التحقق. يرجى المحاولة مرة أخرى.",
+  "otpSend":"تم إرسال رمز التحقق إلى بريدك الإلكتروني.",
+  "incorrectOtp":"رمز التحقق غير صحيح"
+
         }
       },
     }
